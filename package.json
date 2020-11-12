@@ -1,0 +1,29 @@
+{
+  "name": "covid19stat",
+  "version": "1.0.0",
+  "description": "world covid19 statistics",
+  "main": "index.js",
+  "engines": {
+    "node": "8.1.1",
+    "npm": "5.0.3"
+  },
+  "scripts": {
+    "start": "node index.js",
+    "back-end": "npm run dev --prefix Server",
+    "front-end": "npm run start --prefix Covid19stat",
+    "start-app": "npm run start-app --prefix Server",
+    "start-app-dev": "nodemon start.js --prefix Server"
+  },
+  "author": "Joshua Evuetapha",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Joshuajee/Covid19"
+  },
+  "keywords": [
+    "covid"
+  ],
+  "dependencies": {
+    "nodemon": "^2.0.6"
+  }
+}

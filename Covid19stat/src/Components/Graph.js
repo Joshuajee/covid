@@ -1,0 +1,130 @@
+import React from 'react'
+import Bar from 'react-chartjs-2'
+
+
+//Variables
+var options;
+var data;
+var maxLength;
+
+
+function graphHandler(type, plotData, maxData = 20){
+    
+    plotData.sort(function(a, b){
+        return  b[1] - a[1]
+    })
+
+
+    const chartData = chop(plotData, maxData)
+
+    
+    data = {
+        labels : chartData[0],
+        datasets: [{
+            label: "Country",
+            backgroundColor: 'rgba(75, 192, 192, 1)',
+            borderColor: 'rgba(0, 0, 0, 1)',
+            borderWidth: 2,
+            data: chartData[1]
+        }]
+    }
+
+    let start = maxData - 20
+
+    options = {
+        title:{
+            display:true,
+            text: "Showing Top " + start + " to " + maxData + " Daily "+ type +" case by Country ",
+            fontSize:15
+        },
+        legend:{
+            display:false,
+            position: "top"
+        }
+    }
+
+}
+
+
+
+function chop(data, count, max = 20){
+    let data1 = []
+    let data2 = []
+    let counter = 0
+    maxLength = data.length
+
+    for(let i =  0; i < data.length; i++){
+        data1[i] = data[i + count - max][0]
+        data2[i] = data[i + count - max][1]
+        counter++
+
+        if(counter >= count) break
+
+    }
+
+    return [data1, data2]
+}
+
+
+
+class Graph extends React.Component{
+
+    constructor(){
+        super()
+        this.state = {
+            close : "show",
+            position : 20,
+            max: maxLength
+        }
+
+        
+        //Binds the events
+        this.close = this.close.bind(this)
+        this.handleEvent = this.handleEvent.bind(this)
+    }
+
+    close() {
+        this.setState({ close : "hide" })
+    }
+
+    //method for scrolling the chart
+    handleEvent(event){
+
+        const {name, value} = event.target
+        alert(this.state.position)
+        this.setState(prevState => {
+            if(prevState.position >= maxLength){
+                alert("MAAAAAX")  
+            }else if(prevState.position === 0){
+                alert("MIN")  
+                value = 0
+            }
+
+            return {
+                position : parseInt(value)
+            }
+        })
+
+    }
+    
+    render(){
+        graphHandler(this.props.type, this.props.data, this.state.position)
+        return(
+            <div className="Graph">
+                <div>
+                    <Bar  
+                        data={data}
+                        options={options}
+                        />
+                
+                </div>
+                <input type="range" min={20} max={maxLength} value={this.state.position} step={1} onChange={this.handleEvent} />
+                <div><button onClick={this.buttonBackward}>back</button><button onClick={this.buttonForward}> forward </button></div>
+            </div>
+            )
+     
+    }
+
+}
+
+export default Graph
