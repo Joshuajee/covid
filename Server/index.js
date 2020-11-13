@@ -52,7 +52,7 @@ app.get('/api/country', (req, res) =>{
     country.find((err, data)=>{
         if(err){
             res.json({"err":err})
-            console.log("Failed to retrieve data")
+            console.log("Failed to retrieve data " + err)
         }else{
             res.send(data[0])
             

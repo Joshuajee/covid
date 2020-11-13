@@ -6,7 +6,7 @@ import '../Styles/Loader.css'
 import CaseBar from '../Components/CaseBar'
 import Table from '../Components/Table'
 import Graph from '../Components/Graph'
-//import GraphUI from '../Components/GraphUI';
+import GraphUI from '../Components/GraphUI';
 import Loader from '../Components/Loader'
 
 
@@ -45,11 +45,7 @@ class Home extends React.Component{
                 <div className="stat-bar">World Info</div>
                 <CaseBar data={global} />
                 <div className="Graph-Wrapper">
-                    <Graph type="Confirmed" data={data("Confirmed")}/>
-                    <Graph type="Recovered"data={data("Recovered")}/>
-                    <Graph type="Active" data={data("Active")}/>
-                    <Graph type="Death" data={data("Deaths")} />
-                    
+                   
                 </div>
 
                 <Table data={countries} />

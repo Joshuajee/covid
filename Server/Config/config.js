@@ -1,3 +1,7 @@
-module.exports = {
-    DataBaseURI:"mongodb://localhost:27017/covid19data"
+if(process.env.NODE_ENV === "production"){
+    module.exports = {
+        DataBaseURI: process.env.DATABASE_URI
+    }
+}else{
+    module.exports = require("./dev")
 }
