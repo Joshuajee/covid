@@ -1,18 +1,33 @@
 # Covid19
 A web App that shows covid19 cases worldwide and also do forecast on new infections, and recovery and death 
 
+
 ### `npm run front-end-install`
 
-Install front-end dependency.<br/>
+Install front-end dependency for producton.<br/>
 
 ### `npm run back-end-install`
 
-Install back-end dependency.<br/>
+Install back-end dependency for production.<br/>
 
 ### `npm run build-front-end`
 
-build front-end app not neccesary in development environment.
-must be used in production<br/>
+build front-end app for production<br/>
+
+
+
+### `npm run front-end-install`
+
+Install front-end dependency for development.<br/>
+
+### `npm run back-end-install`
+
+Install back-end dependency for development.<br/>
+
+### `npm run build-front-end-dev`
+
+build front-end app for development.<br/>
+
 
 
 ### `npm run start-dev`
