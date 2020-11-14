@@ -8,7 +8,7 @@
     "npm": "5.0.3"
   },
   "scripts": {
-    "start": "concurrently npm run start --prefix Server",
+    "start": "npm run start --prefix Server",
     "back-end": "npm run dev --prefix Server",
     "front-end": "npm run start --prefix Covid19stat",
     "start-app": "concurrently \" npm run front-end \" npm run back-end",
