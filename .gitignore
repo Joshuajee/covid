@@ -4,6 +4,8 @@
 /node_modules
 Covid19stat/node_modules
 Server/node_modules
+Server/Config/dev.js
+
 /.pnp
 .pnp.js
 

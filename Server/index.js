@@ -61,6 +61,16 @@ app.get('/api/country', (req, res) =>{
 
 })
 
+summary.find((err, data)=>{
+    if(err){
+        //res.json({"err":err})
+        console.log("Failed to retrieve data")
+    }else{
+       // res.send(data[0])
+       console.log(data)
+    }
+})
+
 
 const PORT = process.env.PORT || 5000
 
