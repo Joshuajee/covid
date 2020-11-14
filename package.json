@@ -14,8 +14,7 @@
     "start-app": "concurrently \" npm run front-end \" npm run back-end",
     "start-dev": "concurrently \" npm run front-end \" npm run back-end",
     "heroku-postbuild":"NPM_CONFIG_PRODUCTION=false npm install --prefix Server npm install",
-    "heroku-postbuild":"NPM_CONFIG_PRODUCTION=false npm install --prefix Covid19stat",
-    "heroku-postbuild":"NPM_CONFIG_PRODUCTION=false  npm run build --prefix Covid19stat"
+    "heroku-postbuild":"NPM_CONFIG_PRODUCTION=false npm install --prefix Covid19stat"
   },
   "author": "Joshua Evuetapha",
   "license": "ISC",
