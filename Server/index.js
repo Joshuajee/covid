@@ -31,8 +31,10 @@ var job = new CronJob('* * 1 * * *', function() {
 
 });
 job.start();
+
+
         
-//Home Route
+//home api route
 app.get('/api/home', (req, res) =>{
     
     summary.find((err, data)=>{
@@ -47,6 +49,8 @@ app.get('/api/home', (req, res) =>{
   
 })
 
+
+//country api route
 app.get('/api/country', (req, res) =>{
 
     country.find((err, data)=>{
@@ -61,17 +65,37 @@ app.get('/api/country', (req, res) =>{
 
 })
 
-summary.find((err, data)=>{
-    if(err){
-        //res.json({"err":err})
-        console.log("Failed to retrieve data")
-    }else{
-       // res.send(data[0])
-       console.log(data)
-    }
-})
+//check if we are in a production environment
+if(process.env.NODE_ENV === "production"){
+    
+    //serve static production asset
+    app.use(express.static("../Covid19stat/build"))
+
+    //get the current file path
+    const path = require('path')
+
+    //handle any route that is missing from the Server
+    app.get('*', (req, res) =>{  
+        res.sendFile(path.resolve(__dirname, "../Covid19stat", "build", "index.html"))
+        console.log(path.resolve(__dirname, "../Covid19stat", "build", "index.html"))
+    })
+
+}
 
 
+  //serve static production asset
+  app.use(express.static("../Covid19stat/build"))
+
+  //get the current file path
+  const path = require('path')
+
+  //handle any route that is missing from the Server
+  app.get('*', (req, res) =>{  
+      res.sendFile(path.resolve(__dirname, "../Covid19stat", "build", "index.html"))
+      console.log(path.resolve(__dirname, "../Covid19stat", "build", "index.html"))
+  })
+
+//check if there is an environment port
 const PORT = process.env.PORT || 5000
 
 app.listen(PORT)

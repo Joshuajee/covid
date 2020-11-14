@@ -13,9 +13,9 @@
     "front-end": "npm run start --prefix Covid19stat",
     "start-app": "concurrently \" npm run front-end \" npm run back-end",
     "start-dev": "concurrently \" npm run front-end \" npm run back-end",
-    "front-end-install":"NPM_CONFIG_PRODUCTION=false npm install --prefix Covid19stat",
-    "build-front-end":"NPM_CONFIG_PRODUCTION=false npm run build --prefix Covid19stat",
-    "back-end-install":"NPM_CONFIG_PRODUCTION=false npm install --prefix Server",
+    "front-end-install":"npm install --prefix Covid19stat",
+    "build-front-end":"npm run build --prefix Covid19stat",
+    "back-end-install":"npm install --prefix Server",
     "heroku-postbuild":"NPM_CONFIG_PRODUCTION=false npm install --prefix Server"
   },
   "author": "Joshua Evuetapha",
