@@ -4,11 +4,12 @@ import "../Styles/Loader.css"
 
 function Loader(){
 
-    return(
-            <div className="loader">
-                <span></span>
-                <span></span>
-                <span></span>
+    return(<div className="loader-wrapper">
+                <div className="loader">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
             </div>
         )
 }

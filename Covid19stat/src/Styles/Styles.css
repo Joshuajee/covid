@@ -140,7 +140,7 @@ th {
 
 .Graph{
     margin: 1%;
-    grid-template-columns : repeat(auto-fit, minmax(350px, 1fr));
+    grid-template-columns : repeat(auto-fit, minmax(30%, 1fr));
     grid-gap: 5px;
     justify-content: center;
     background-color:white;
@@ -180,14 +180,12 @@ th {
     -webkit-box-shadow: -1px 1px 15px 2px rgba(0,0,0,0.75);
     -moz-box-shadow: -1px 1px 15px 2px rgba(0,0,0,0.75);
     box-shadow: -1px 1px 15px 2px rgba(0,0,0,0.75);
-
 }
 
 
 
 .failed{
     margin-top: 15%;
-
 }
 .failed-msg{
     height: 150px;
