@@ -2,7 +2,6 @@ import React from 'react'
 import axios from 'axios'
 //import CountryCaseBar from '../Components/CountryCaseBar'
 import Loader from '../Components/Loader'
-
 //import GraphLine from '../Components/GraphLine'
 
 var country = 0
@@ -12,7 +11,7 @@ class Country extends React.Component{
     constructor(){
         super()
         this.state={
-            isLoading : true
+            isLoading : false
         }
     }
 
@@ -37,7 +36,9 @@ class Country extends React.Component{
             <div className="container">
                 
                 <div className="Graph-Wrapper">
+
                    
+                                
                 </div>
             </div>
         )

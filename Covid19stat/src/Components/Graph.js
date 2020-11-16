@@ -91,20 +91,11 @@ class Graph extends React.Component{
     handleEvent(event){
 
         const {name, value} = event.target
-        alert(this.state.position)
-        this.setState(prevState => {
-            if(prevState.position >= maxLength){
-                alert("MAAAAAX")  
-            }else if(prevState.position === 0){
-                alert("MIN")  
-                value = 0
-            }
 
-            return {
+        this.setState({
                 position : parseInt(value)
-            }
+    
         })
-
     }
     
     render(){

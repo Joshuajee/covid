@@ -6,8 +6,11 @@ import '../Styles/Loader.css'
 import CaseBar from '../Components/CaseBar'
 import Table from '../Components/Table'
 import Graph from '../Components/Graph'
-import GraphUI from '../Components/GraphUI';
+//import GraphUI from '../Components/GraphUI';
 import Loader from '../Components/Loader'
+import Failed from '../Components/Failed'
+import Navbar from '../Components/NavBar'
+import Footer from '../Components/Footer'
 
 
 var countries = []
@@ -18,38 +21,62 @@ class Home extends React.Component{
     constructor(){
         super()
         this.state={
-            isLoading : true
+            isLoading : true,
+            failed : false
         }
 
        
     }
+    
 
+     //sends an api request when the components mount
+     componentDidMount(){
 
-    //sends an api request when the components mount
-    componentDidMount(){
         let uri = "/api/home"
+
         axios.get(uri).then(({data}) =>{
-            global = data.Global
-            countries = data.Countries
+            
+            global = data.response.Global
+            countries = data.response.Countries
+
             this.setState({
                 isLoading : false
+            })
+
+        }).catch(error => {
+
+            this.setState({
+                isLoading : false,
+                failed : true
+
             })
         })
     }
 
+
+   
     render(){
         if(this.state.isLoading)
             return(<Loader />)
-        return(
-            <div className="container">
-                <div className="stat-bar">World Info</div>
-                <CaseBar data={global} />
-                <div className="Graph-Wrapper">
-                   
-                </div>
+        if(this.state.failed)
+            return(<Failed />)
+        return(<div>
+                    <Navbar />
+                    <div className="container">
+                        <div className="stat-bar">World Info</div>
+                        <CaseBar data={global} />
+                        
+                        <div className="Graph-Wrapper">
+                            <Graph data={data("Confirmed")} type={"Confirmed"}/>
+                            <Graph data={data("Deaths")} type={"Deaths"}/>
+                            <Graph data={data("Recovered")} type={"Recovered"}/>
+                            <Graph data={data("Active")} type={"Active"}/>
+                        </div>
 
-                <Table data={countries} />
-               
+                        <Table data={countries} />
+                        
+                    </div>
+                    <Footer />
             </div>
         )
 
@@ -57,6 +84,7 @@ class Home extends React.Component{
 
 }
 
+//
 
 
 function data(type){

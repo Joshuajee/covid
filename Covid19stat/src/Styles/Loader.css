@@ -1,52 +1,50 @@
 
-  .loader{
-    position: relative;
-    height: 100px;
-    width: 100px;
-    left: 45%;
-    right: 45%;
-    margin-top: 15%;
-    margin-bottom: 15%;
-    justify-self: center;
-    background: linear-gradient(rgb(55, 138, 216), rgb(21, 21, 238));
-    border-radius: 50%;
-    animation: rotates 2s linear infinite;
+.loader{
+  position: absolute;
+  right: 45%;
+  left: 45%;
+  top: 40%;
+  bottom: 40%;
+  height: 100px;
+  width: 100px;
+  background: linear-gradient(rgb(55, 138, 216), rgb(21, 21, 238));
+  border-radius: 50%;
+  animation: rotates 2s linear infinite;
+}
+.loader::after{
+  content: " ";
+  position: absolute;
+  background-color: #dfdce7;
+  top: 10px;
+  left: 10px;
+  right: 10px;
+  bottom: 10px;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  box-shadow: 0 0 8px 1px rgba(10,10,12,.5), 0px 0px 8px 1px rgba(10,10,12,.5);
+}
+@keyframes rotates {
+  0%{
+    transform: rotate(0deg);
   }
-  .loader::after{
-    content: " ";
-    position: absolute;
-    background-color: #dfdce7;
-    top: 10px;
-    left: 10px;
-    right: 10px;
-    bottom: 10px;
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    box-shadow: 0 0 8px 1px rgba(10,10,12,.5), 0px 0px 8px 1px rgba(10,10,12,.5);
+  100%{
+    transform: rotate(360deg);
   }
-  @keyframes rotates {
-    0%{
-      transform: rotate(0deg);
-    }
-    100%{
-      transform: rotate(360deg);
-    }
-  }
-  .loader span{
-    position: absolute;
-    height: 100%;
-    width: 100%;
-    background: linear-gradient(rgb(248, 167, 46), rgb(24, 247, 43), rgb(216, 73, 73));
-    border-radius: 50%;
-  }
-  .loader span:nth-child(1){
-    filter: blur(3px);
-  }
-  .loader span:nth-child(2){
-    filter: blur(6px);
-  }
-  .loader span:nth-child(3){
-    filter: blur(7px);
-  }
-  
+}
+.loader span{
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(rgb(248, 167, 46), rgb(24, 247, 43), rgb(216, 73, 73));
+  border-radius: 50%;
+}
+.loader span:nth-child(1){
+  filter: blur(3px);
+}
+.loader span:nth-child(2){
+  filter: blur(6px);
+}
+.loader span:nth-child(3){
+  filter: blur(7px);
+}

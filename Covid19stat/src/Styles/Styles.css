@@ -6,7 +6,7 @@
 
 .navbar{
     grid-column: span 12;
-    height: 100px;
+    height: 80px;
     background-color: darkslategray;
     color: whitesmoke;
     margin-bottom: 15px;
@@ -95,7 +95,7 @@ th {
 
 .footer{
     grid-column: span 12;
-    height: 300px;
+    height: 200px;
     background-color: darkslategray;
     font-size: 30px;
     justify-content: left;
@@ -168,13 +168,34 @@ th {
 
 .stat-bar{
     grid-column: span 12;
-    margin: 5px;
+    margin-right: 5%;
+    margin-left: 5%;
     text-align: center;
     font-size: 40px;
     display: flex;
     align-items: center;
     justify-content: center;
+    background-color: whitesmoke;
+    padding: 1%;
+    -webkit-box-shadow: -1px 1px 15px 2px rgba(0,0,0,0.75);
+    -moz-box-shadow: -1px 1px 15px 2px rgba(0,0,0,0.75);
+    box-shadow: -1px 1px 15px 2px rgba(0,0,0,0.75);
+
 }
 
 
 
+.failed{
+    margin-top: 15%;
+
+}
+.failed-msg{
+    height: 150px;
+    background-color: whitesmoke;
+    padding: 1%;
+    width: 50%;
+    -webkit-box-shadow: -1px 1px 15px 2px rgba(0,0,0,0.75);
+    -moz-box-shadow: -1px 1px 15px 2px rgba(0,0,0,0.75);
+    box-shadow: -1px 1px 15px 2px rgba(0,0,0,0.75);
+
+}

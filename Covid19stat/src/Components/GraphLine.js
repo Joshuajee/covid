@@ -1,7 +1,6 @@
 import React from 'react'
 import {Bar} from 'react-chartjs-2'
-//import TableData from '../Data/summary.json'
-/*
+
 var options;
 var data;
 var maxLength;
@@ -197,4 +196,3 @@ class GraphLine extends React.Component{
 
 export default GraphLine
 
-*/

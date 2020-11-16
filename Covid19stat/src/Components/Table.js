@@ -3,7 +3,7 @@ import React from 'react'
 import TableRow from './TableRow'
 
 
-
+//function to handle json data
 function dataHandler(mydata){
 
     var data = []
@@ -29,6 +29,9 @@ function dataHandler(mydata){
             data[i] = [i + 1, data[i]]
                     
         }
+        
+        //data.map(property => alert(property))
+        //return 0
 
         return data.map(property => <TableRow table={property} />)
 }

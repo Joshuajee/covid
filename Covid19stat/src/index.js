@@ -16,15 +16,9 @@ const home = () => <Home />
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
-
-        <NavBar />
-        
         <Route path="/" exact={true} component={home} />
         <Route path="/world" exact={true} component={home} />
         <Route path="/country"  component={Country} />
-
-        <Footer />
-
     </BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root')

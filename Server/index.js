@@ -38,12 +38,13 @@ job.start();
 app.get('/api/home', (req, res) =>{
     
     summary.find((err, data)=>{
+        console.log("Attempting to make retrieve data from mongodb")
         if(err){
             res.json({"err":err})
             console.log("Failed to retrieve data")
         }else{
-            res.send(data[0])
-            
+            res.json({response:data[0]})
+            console.log(data[0])
         }
     })
   
@@ -83,8 +84,8 @@ if(process.env.NODE_ENV === "production"){
 }
 
 
+
 //check if there is an environment port
 const PORT = process.env.PORT || 5000
 
 app.listen(PORT)
-
