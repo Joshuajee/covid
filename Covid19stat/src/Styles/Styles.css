@@ -140,7 +140,7 @@ th {
 
 .Graph{
     margin: 1%;
-    grid-template-columns : repeat(auto-fit, minmax(30%, 1fr));
+    grid-template-columns : repeat(auto-fit, minmax(350, 1fr));
     grid-gap: 5px;
     justify-content: center;
     background-color:white;
@@ -197,3 +197,16 @@ th {
     box-shadow: -1px 1px 15px 2px rgba(0,0,0,0.75);
 
 }
+
+@media only screen and (max-width: 600px) {
+
+    .Graph{
+        width: 100%;
+    }
+    .Graph-Wrapper{
+        width: 100%;
+    }
+    .case{
+        width: 100%;
+    }
+  }

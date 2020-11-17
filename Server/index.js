@@ -1,10 +1,11 @@
 const express = require('express')
 const mongoose = require('mongoose')
 const config = require("./Config/config")
-const CronJob = require('cron').CronJob;
 const axios = require('axios')
+const cron = require('node-cron');
 
-//const cron = require("./Cron")
+//Require a schedule task of getting summary
+require("./Cron")
 
 //Create an express app
 const app = express()
@@ -24,20 +25,12 @@ const db = mongoose.connection
 //Bind connection to error event (to get notification of connection errors)
 db.on('error', console.error.bind(console, 'MongoDB connection error:'))
 
-var job = new CronJob('* * 1 * * *', function() {
-    axios.get("https://api.covid19api.com/summary").then(({data}) =>{
-        console.log(data)
-    })
 
-});
-job.start();
-
-
-        
+  
 //home api route
 app.get('/api/home', (req, res) =>{
     
-    summary.find((err, data)=>{
+    summary.find((err, data) =>{
         console.log("Attempting to make retrieve data from mongodb")
         if(err){
             res.json({"err":err})

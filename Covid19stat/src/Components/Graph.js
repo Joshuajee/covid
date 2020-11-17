@@ -1,5 +1,5 @@
 import React from 'react'
-import Bar from 'react-chartjs-2'
+import {Bar, HorizontalBar} from 'react-chartjs-2'
 
 
 //Variables
@@ -8,14 +8,14 @@ var data;
 var maxLength;
 
 
-function graphHandler(type, plotData, maxData = 20){
+function graphHandler(type, plotData, position, maxData = 20){
     
     plotData.sort(function(a, b){
         return  b[1] - a[1]
     })
 
 
-    const chartData = chop(plotData, maxData)
+    var chartData = chop(plotData, position, maxData)
 
     
     data = {
@@ -29,12 +29,12 @@ function graphHandler(type, plotData, maxData = 20){
         }]
     }
 
-    let start = maxData - 20
+    let start = position - maxData
 
     options = {
         title:{
             display:true,
-            text: "Showing Top " + start + " to " + maxData + " Daily "+ type +" case by Country ",
+            text: "Showing Top " + start + " to " + position + " Daily "+ type +" case by Country ",
             fontSize:15
         },
         legend:{
@@ -47,19 +47,16 @@ function graphHandler(type, plotData, maxData = 20){
 
 
 
-function chop(data, count, max = 20){
+function chop(data, postion, maxData){
     let data1 = []
     let data2 = []
-    let counter = 0
+    let start  = postion - maxData
+    console.log(postion)
     maxLength = data.length
 
-    for(let i =  0; i < data.length; i++){
-        data1[i] = data[i + count - max][0]
-        data2[i] = data[i + count - max][1]
-        counter++
-
-        if(counter >= count) break
-
+    for(let i = 0; i < maxData; i++){
+        data1[i] = data[i + start][0]
+        data2[i] = data[i + start][1]
     }
 
     return [data1, data2]
@@ -103,14 +100,18 @@ class Graph extends React.Component{
         return(
             <div className="Graph">
                 <div>
-                    <Bar  
+                    <Bar
                         data={data}
                         options={options}
                         />
                 
                 </div>
-                <input type="range" min={20} max={maxLength} value={this.state.position} step={1} onChange={this.handleEvent} />
-                <div><button onClick={this.buttonBackward}>back</button><button onClick={this.buttonForward}> forward </button></div>
+                <input 
+                    type="range" min={20} 
+                    max={maxLength} 
+                    value={this.state.position} 
+                    step={1} 
+                    onChange={this.handleEvent} />
             </div>
             )
      

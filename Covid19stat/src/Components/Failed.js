@@ -8,9 +8,10 @@ function Failed(props){
         <div className="failed">
             <center>
                 <div className="failed-msg">
-                    Failed To Retrieve data please reload
+                    Failed To Retrieve data please reload.
+                    <Link to={"/"}> reload </Link>
                 </div>
-                <Link to={""}> reload </Link>
+                
             </center>
         </div>
     )
