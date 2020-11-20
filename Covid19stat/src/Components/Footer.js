@@ -8,7 +8,7 @@ function Footer(props){
                 Twitter
             </a>
             <br/>
-            <a  className="socials" href="https://www.twitter.com/evuetaphajoshua">
+            <a  className="socials" href="https://www.github.com/joshuajee">
                 Github
             </a>
         </div>

@@ -4,7 +4,7 @@ const mongoose = require('mongoose')
 const axios = require('axios')
 
 //Require the summary schema
-const country = require("./Model/Country")
+const countryModel = require("./Model/Country")
 
 const config = require("./Config/config")
 
@@ -18,35 +18,75 @@ const db = mongoose.connection
 db.on('error', console.error.bind(console, 'MongoDB connection error:'))
 
 
-var countriesSlug;
-var countries = null;
+var countriesSlug = []
+var len = null
+
 
 axios.get("https://api.covid19api.com/summary").
 then(({data}) =>{
 
-    var len  = data.Countries.length
-    countries = data.Countries
-    console.log(len)
-    console.log(countries[0])
+    len  = data.Countries.length
+    
+        let count = 0
 
-    for(let i = 0; i < 1; i++){
-        console.log(countries[i].Slug)
-        axios.get("https://api.covid19api.com/dayone/country/"+countries[i].Slug).
-        then(({country}) =>{
+        let cron = require('node-cron');
+ 
+        let task = cron.schedule('*/30 * * * * *', () => {
 
-            for(let i = 0; i < countries.length; i++){
-                console.log(country[i].Country)
-                console.log(country[i].Confirmed)
-                console.log(country[i].Recovered)
-                console.log(country[i].Deaths)
-                console.log(country[i].Active)
-            }
+            let  slug = data.Countries[count].Slug
+
+            console.log("done " + count + "  " + slug)
+
             
-        }).catch(({error}) => {
-            console.log("error: " + error)
-        })
-    }  
-  
+
+            let uri = "https://api.covid19api.com/dayone/country/"+data.Countries[count].Slug
+
+            axios.get(uri).
+            then(country =>{
+
+                console.log(country.data.length)
+
+                for(let i = 0; i < country.data.length; i++){
+
+                    console.log(slug)
+                    console.log(country.data[i].Country)
+                    console.log(country.data[i].Confirmed)
+                    console.log(country.data[i].Recovered)
+                    console.log(country.data[i].Active)
+                    console.log(country.data[i].Deaths)
+
+
+                    const country_obj = new countryModel()
+
+                    countryModel.deleteMany({ CountrySlug: slug }, function (err) {
+                        if (err) return handleError(err);
+                        // deleted at most one tank document
+                        console.log("deleted")
+                      });
+                    
+                    country_obj.CountrySlug = slug
+                    country_obj.Country = country.data[i].Country
+                    country_obj.Confirmed = country.data[i].Confirmed
+                    country_obj.Recovered = country.data[i].Recovered
+                    country_obj.Active = country.data[i].Active
+                    country_obj.Deaths = country.data[i].Deaths
+            
+                    country_obj.save()
+               
+                }
+
+            }).catch(error =>{
+
+                console.log("error " + error)
+
+            })
+
+            count++
+
+            if(count + 1 >= len) task.destroy();
+
+        });
+
 
 }).catch(({error}) =>{
     console.log("error")
@@ -54,29 +94,17 @@ then(({data}) =>{
 
 
 
-/*
-for(let i = 0; i < len; i++){
-    countriesSlug[i] = countries[i].Slug
-}  
 
-*/
+       /* 
+       const con = new country()
 
-//console.log(countriesSlug)
+        con.Country = 
+        con.CountrySlug
+        con.Confirmed
+        con.Deaths
+        con.Recovered
+        con.Active
 
-/*
-for(let i = 0; i < 1; i++){
-    console.log("Slug: " + data.Countries[i].Slug)
-    let slug = data.Countries[i].Slug
-    axios.get("https://api.covid19api.com/dayone/country/south-africa").
-    then(({country}) =>{
-        console.log(" co  " + country)
-        for(let i = 0; i < countries.length; i++){
-            console.log(country[i].Country)
-            console.log(country[i].Confirmed)
-            console.log(country[i].Recovered)
-            console.log(country[i].Deaths)
-            console.log(country[i].Active)
-        }
-        
-    })
+        con.Save()
+
 */

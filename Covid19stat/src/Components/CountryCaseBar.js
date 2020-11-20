@@ -1,8 +1,7 @@
 import React from 'react'
 import Case from './Case'
-//import Summary from '../Data/summary.json'
 
-function CountryCaseBar(){
+function CountryCaseBar(props){
     let TotalConfirmed = Summary.Global.TotalConfirmed;
     let TotalRecovered = Summary.Global.TotalRecovered;
     let TotalDeaths = Summary.Global.TotalDeaths;

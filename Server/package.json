@@ -11,7 +11,8 @@
     "start": "node index.js",
     "back-end": "node index.js",
     "dev": "nodemon index.js",
-    "restart-app": "node start.js"
+    "restart-app": "node start.js",
+    "restart-app-dev": "nodemon start.js"
   },
   "author": "Joshua Evuetapha",
   "license": "ISC",

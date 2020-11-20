@@ -19,6 +19,7 @@
     "front-end-install-dev":"npm install --prefix Covid19stat",
     "back-end-install-dev":"npm install --prefix Server",
     "build-front-end-dev":"npm run build --prefix Covid19stat",
+    "restart": "npm run restart-app --prefix Server",
     "heroku-postbuild":"NPM_CONFIG_PRODUCTION=false npm install --prefix Server"
   },
   "author": "Joshua Evuetapha",
