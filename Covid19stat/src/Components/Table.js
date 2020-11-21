@@ -1,5 +1,4 @@
 import React from 'react'
-
 import TableRow from './TableRow'
 
 
@@ -29,9 +28,6 @@ function dataHandler(mydata){
             data[i] = [i + 1, data[i]]
                     
         }
-        
-        //data.map(property => alert(property))
-        //return 0
 
         return data.map(property => <TableRow table={property} />)
 }
@@ -76,8 +72,7 @@ class Table extends React.Component{
                             <th>Total Deaths</th>
                             <th>Daily Confirmed Case</th>
                             <th>Daily Recovered Case</th>
-                            {//<th>Daily Rise in Cases </th>
-    }
+                            <th>Daily Rise in Cases </th>
                             <th>Daily Death Case</th>
                         </tr>
 

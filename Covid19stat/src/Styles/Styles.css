@@ -198,15 +198,6 @@ th {
 
 }
 
-@media only screen and (max-width: 600px) {
-
-    .Graph{
-        width: 100%;
-    }
-    .Graph-Wrapper{
-        width: 100%;
-    }
-    .case{
-        width: 100%;
-    }
-  }
+.tableText{
+    color:rgb(99, 96, 96);
+}

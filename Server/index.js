@@ -45,14 +45,14 @@ app.get('/api/home', (req, res) =>{
 
 
 //country api route
-app.get('/api/country', (req, res) =>{
+app.get('/api/country/:country', (req, res) =>{
 
-    country.find((err, data)=>{
+    country.find({CountrySlug: req.params.country }, (err, data)=>{
         if(err){
             res.json({"err":err})
             console.log("Failed to retrieve data " + err)
         }else{
-            res.send(data[0])
+            res.send(data)
             
         }
     })

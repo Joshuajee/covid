@@ -4,6 +4,8 @@ import axios from 'axios'
 import Loader from '../Components/Loader'
 //import GraphLine from '../Components/GraphLine'
 
+
+
 var country = 0
 
 class Country extends React.Component{
@@ -13,14 +15,29 @@ class Country extends React.Component{
         this.state={
             isLoading : false
         }
-    }
 
+    }
+   
+    
 
     //sends an api request when the components mount
     componentDidMount(){
-        let uri = "/api/country"
+
+        let uri = "/api" + window.location.pathname
         axios.get(uri).then(({data}) =>{
-            country = data
+   
+            let confirmed = []
+            let recovered = []
+            let deaths = []
+            let active = []
+
+            for(let i = 0; i < data.length; i++){
+                confirmed[i] = data[i].Confirmed
+                recovered[i] = data[i].Recovered
+                deaths[i] = data[i].Deaths
+                active[i] = data[i].Active
+            }
+            console.log(active)
             this.setState({
                 isLoading : false
             })

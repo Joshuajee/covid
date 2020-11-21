@@ -18,8 +18,7 @@ function TableRow(props){
             <td><Link to={link}>{props.table[1][3]} </Link></td>
             <td><Link to={link}>{props.table[1][5]} </Link></td>
             <td><Link to={link}>{props.table[1][6]} </Link></td>
-            {//<td><Link to={link}>{activeNew} </Link></td>
-            }
+            <td><Link to={link}>{activeNew} </Link></td>
             <td><Link to={link}>{props.table[1][7]} </Link></td>
         </tr>
 
