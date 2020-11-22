@@ -7,6 +7,7 @@ const Country = new mongoose.Schema({
     Deaths:{type:Number, default:""},
     Recovered:{type:Number, default:""},
     Active:{type:Number, default:""},
+    Date:{type:String, default:""}
 })
 
 

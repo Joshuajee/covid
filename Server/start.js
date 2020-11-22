@@ -70,6 +70,7 @@ then(({data}) =>{
                     country_obj.Recovered = country.data[i].Recovered
                     country_obj.Active = country.data[i].Active
                     country_obj.Deaths = country.data[i].Deaths
+                    country_obj.Date = country.data[i].Date
             
                     country_obj.save()
                
