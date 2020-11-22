@@ -1,11 +1,6 @@
 const express = require('express')
 const mongoose = require('mongoose')
 const config = require("./Config/config")
-const axios = require('axios')
-const cron = require('node-cron');
-
-//Require a schedule task of getting summary
-require("./Cron")
 
 //Create an express app
 const app = express()
@@ -26,18 +21,24 @@ const db = mongoose.connection
 db.on('error', console.error.bind(console, 'MongoDB connection error:'))
 
 
+//set to true if you want to restart the app else set to false
+const  restart = true
+
+if(restart){
+    require('./start')
+}
   
 //home api route
 app.get('/api/home', (req, res) =>{
     
-    summary.find((err, data) =>{
+    summary.findOne({},(err, data) =>{
         console.log("Attempting to make retrieve data from mongodb")
         if(err){
             res.json({"err":err})
             console.log("Failed to retrieve data")
         }else{
-            res.json({response:data[0]})
-            console.log(data[0])
+            res.json({response:data})
+            console.log(data)
         }
     })
   

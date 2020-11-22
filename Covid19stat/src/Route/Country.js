@@ -2,18 +2,22 @@ import React from 'react'
 import axios from 'axios'
 //import CountryCaseBar from '../Components/CountryCaseBar'
 import Loader from '../Components/Loader'
-//import GraphLine from '../Components/GraphLine'
+import GraphLine from '../Components/GraphLine'
 
 
 
 var country = 0
+var confirmed = []
+var recovered = []
+var deaths = []
+var active = []
 
 class Country extends React.Component{
 
     constructor(){
         super()
         this.state={
-            isLoading : false
+            isLoading : true
         }
 
     }
@@ -26,10 +30,7 @@ class Country extends React.Component{
         let uri = "/api" + window.location.pathname
         axios.get(uri).then(({data}) =>{
    
-            let confirmed = []
-            let recovered = []
-            let deaths = []
-            let active = []
+            
 
             for(let i = 0; i < data.length; i++){
                 confirmed[i] = data[i].Confirmed
@@ -53,9 +54,20 @@ class Country extends React.Component{
             <div className="container">
                 
                 <div className="Graph-Wrapper">
-
-                   
-                                
+                    <br/>
+                active
+                   {active}
+                   <br/>
+                confirmed
+                   {confirmed}
+                   <br/>
+                deaths
+                   {deaths}
+                   <br/>
+                recovered
+                   {recovered}
+                   <br/>
+                    
                 </div>
             </div>
         )
@@ -63,10 +75,13 @@ class Country extends React.Component{
     }
 
 }
+
+
 /*
-<GraphLine type="Confirmed"/>
-<GraphLine type="Recovered"/>
-<GraphLine type="Active"/>
-<GraphLine type="Death"/>*/
-            //<CountryCaseBar />
+<GraphLine data type="Confirmed"/>
+                    <GraphLine type="Recovered"/>
+                    <GraphLine type="Active"/>
+                    <GraphLine type="Death"/>*/
+                                
+
 export default Country
