@@ -12,6 +12,7 @@ var recovered = []
 var deaths = []
 var active = []
 var date = []
+var country = ""
 
 class Country extends React.Component{
 
@@ -28,7 +29,8 @@ class Country extends React.Component{
 
         let uri = "/api" + window.location.pathname
         axios.get(uri).then(({data}) =>{
-   
+            country = data[0].Country
+            
             for(let i = 0; i < data.length; i++){
 
                 confirmed[i] = data[i].Confirmed
@@ -36,6 +38,7 @@ class Country extends React.Component{
                 deaths[i] = data[i].Deaths
                 active[i] = data[i].Active
                 date[i] = data[i].Date
+                
 
             }
 
@@ -56,7 +59,7 @@ class Country extends React.Component{
         return(<div>
                     <Navbar />
                     <div className="container">
-
+                        <div className="stat-bar">{country} Info</div>
                         <CountryCaseBar 
                             confirmed={confirmed}
                             recovered={recovered}
