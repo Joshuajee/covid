@@ -8,24 +8,18 @@ var data;
 var maxLength;
 
 
-function graphHandler(type, plotData, position, maxData = 20){
-    
-    plotData.sort(function(a, b){
-        return  b[1] - a[1]
-    })
+function graphHandler(type, plotData, plotDate, position, maxData = 20){
 
+    var chartData = chop(plotData, plotDate, position, maxData)
 
-    var chartData = chop(plotData, position, maxData)
-
-    
     data = {
-        labels : chartData[0],
+        labels : chartData[1],
         datasets: [{
             label: "Country",
             backgroundColor: 'rgba(75, 192, 192, 1)',
             borderColor: 'rgba(0, 0, 0, 1)',
             borderWidth: 2,
-            data: chartData[1]
+            data: chartData[0]
         }]
     }
 
@@ -34,7 +28,7 @@ function graphHandler(type, plotData, position, maxData = 20){
     options = {
         title:{
             display:true,
-            text: "Showing Top " + start + " to " + position + " Daily "+ type +" case by Country ",
+            text: "Showing Culmulative " + start + " to " + position + " Daily "+ type +" case by Country ",
             fontSize:15
         },
         legend:{
@@ -47,18 +41,18 @@ function graphHandler(type, plotData, position, maxData = 20){
 
 
 
-function chop(data, postion, maxData){
+function chop(data, date, postion, maxData){
+    
     let data1 = []
     let data2 = []
     let start  = postion - maxData
-    console.log(postion)
+
     maxLength = data.length
 
     for(let i = 0; i < maxData; i++){
-        data1[i] = data[i + start][0]
-        data2[i] = data[i + start][1]
+        data1[i] = data[i + start]
+        data2[i] = date[i + start]
     }
-
     return [data1, data2]
 }
 
@@ -73,11 +67,13 @@ class GraphLine extends React.Component{
             position : 20,
             max: maxLength
         }
-
+        
+ 
         
         //Binds the events
         this.close = this.close.bind(this)
         this.handleEvent = this.handleEvent.bind(this)
+
     }
 
     close() {
@@ -91,23 +87,28 @@ class GraphLine extends React.Component{
 
         this.setState({
                 position : parseInt(value)
-    
         })
     }
     
     render(){
-        graphHandler(this.props.type, this.props.data, this.state.position)
+
+        graphHandler(this.props.type, this.props.data, this.props.date, this.state.position)
+        
         return(
             <div className="Graph">
+                
                 <div>
+
                     <Bar
                         data={data}
                         options={options}
                         />
                 
                 </div>
+
                 <input 
-                    type="range" min={20} 
+                    type="range" 
+                    min={20} 
                     max={maxLength} 
                     value={this.state.position} 
                     step={1} 

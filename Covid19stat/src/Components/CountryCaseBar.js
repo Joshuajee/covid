@@ -2,28 +2,41 @@ import React from 'react'
 import Case from './Case'
 
 function CountryCaseBar(props){
-    let TotalConfirmed = Summary.Global.TotalConfirmed;
-    let TotalRecovered = Summary.Global.TotalRecovered;
-    let TotalDeaths = Summary.Global.TotalDeaths;
-    let TotalActive = TotalConfirmed - TotalRecovered - TotalDeaths;
 
-    let NewConfirmed = Summary.Global.NewConfirmed;
-    let NewRecovered = Summary.Global.NewRecovered;
-    let NewDeaths = Summary.Global.NewDeaths;
-    //let NewActive = NewConfirmed - NewRecovered - NewDeaths;
+    let confirmed = props.confirmed
+    let recovered = props.recovered
+    let active = props.active
+    let deaths = props.deaths
+
+    let dailyConfirmed = confirmed[confirmed.length - 1] - confirmed[confirmed.length - 2]
+    let dailyRecovered = recovered[recovered.length - 1] - recovered[recovered.length - 2]
+    let dailyActive = active[active.length - 1] - active[active.length - 2]
+    let dailyDeaths = deaths[deaths.length - 1] - deaths[deaths.length - 2]
 
     return(
         <div className="caseBar">
-            <Case number ={TotalConfirmed} type = "Total Confirmed Case" color ="#000000" chart={true} />
-            <Case number ={TotalRecovered} type = "Total Recovered Case" color ="#12f432" chart={true} />
-            <Case number ={TotalActive} type = "Total Active Case" color ="#701722" chart={true} />
-            <Case number ={TotalDeaths} type = "Total Death Case" color ="#ff0000" chart={true} />
-            <Case number ={NewConfirmed} type = "Daily Confirmed Case" color ="#000000"/>
-            <Case number ={NewRecovered} type = "Daily Recovered Case" color ="#12f432"/>
-            <Case number ={NewDeaths} type = "Daily Death Case" color ="#ff0000"/>
+
+            <Case number ={confirmed[confirmed.length - 1]} type = "Total Confirmed Case" color ="#000000" chart={true} />
+            <Case number ={recovered[recovered.length - 1]} type = "Total Recovered Case" color ="#12f432" chart={true} />
+            <Case number ={active[active.length - 1]} type = "Total Active Case" color ="#701722" chart={true} />
+            <Case number ={deaths[deaths.length - 1]} type = "Total Death Case" color ="#ff0000" chart={true} />
+            <Case number ={dailyConfirmed} type = "Daily Confirmed Case" color ="#000000"/>
+            <Case number ={dailyRecovered} type = "Daily Recovered Case" color ="#12f432"/>
+            <Case number ={dailyDeaths} type = "Daily Death Case" color ="#ff0000"/>
+        
+
         </div>
         )
 }
 
 
 export default CountryCaseBar
+
+
+/*
+
+            <Case number ={NewConfirmed} type = "Daily Confirmed Case" color ="#000000"/>
+            <Case number ={NewRecovered} type = "Daily Recovered Case" color ="#12f432"/>
+            <Case number ={NewDeaths} type = "Daily Death Case" color ="#ff0000"/>
+
+ */

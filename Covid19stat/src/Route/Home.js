@@ -84,8 +84,6 @@ class Home extends React.Component{
 
 }
 
-//
-
 
 function data(type){
     let count = 0

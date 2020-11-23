@@ -51,7 +51,7 @@ function chop(data, postion, maxData){
     let data1 = []
     let data2 = []
     let start  = postion - maxData
-    console.log(postion)
+    //console.log(postion)
     maxLength = data.length
 
     for(let i = 0; i < maxData; i++){

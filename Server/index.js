@@ -22,7 +22,7 @@ db.on('error', console.error.bind(console, 'MongoDB connection error:'))
 
 
 //set to true if you want to restart the app else set to false
-const  restart = true
+const  restart = false
 
 if(restart){
     require('./start')

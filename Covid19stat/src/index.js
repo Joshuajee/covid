@@ -4,8 +4,6 @@ import {BrowserRouter, Route} from 'react-router-dom'
 import './index.css';
 import './Styles/Styles.css';
 import * as serviceWorker from './serviceWorker';
-import NavBar from './Components/NavBar'
-import Footer from './Components/Footer'
 import Home from './Route/Home'
 import Country from './Route/Country'
 
@@ -16,9 +14,9 @@ const home = () => <Home />
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
-        <Route path="/" exact={true} component={home} />
-        <Route path="/world" exact={true} component={home} />
-        <Route path="/country"  component={Country} />
+      <Route path="/" exact={true} component={home} />
+      <Route path="/world" exact={true} component={home} />
+      <Route path="/country"  component={Country} />
     </BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root')

@@ -1,16 +1,17 @@
 import React from 'react'
 import axios from 'axios'
-//import CountryCaseBar from '../Components/CountryCaseBar'
 import Loader from '../Components/Loader'
 import GraphLine from '../Components/GraphLine'
+import CountryCaseBar from '../Components/CountryCaseBar'
+import Navbar from '../Components/NavBar'
+import Footer from '../Components/Footer'
 
 
-
-var country = 0
 var confirmed = []
 var recovered = []
 var deaths = []
 var active = []
+var date = []
 
 class Country extends React.Component{
 
@@ -21,8 +22,6 @@ class Country extends React.Component{
         }
 
     }
-   
-    
 
     //sends an api request when the components mount
     componentDidMount(){
@@ -30,19 +29,22 @@ class Country extends React.Component{
         let uri = "/api" + window.location.pathname
         axios.get(uri).then(({data}) =>{
    
-            
-
             for(let i = 0; i < data.length; i++){
+
                 confirmed[i] = data[i].Confirmed
                 recovered[i] = data[i].Recovered
                 deaths[i] = data[i].Deaths
                 active[i] = data[i].Active
+                date[i] = data[i].Date
+
             }
-            console.log(active)
+
             this.setState({
                 isLoading : false
             })
+
         })
+
     }
 
 
@@ -50,38 +52,57 @@ class Country extends React.Component{
 
         if(this.state.isLoading)
             return(<Loader />)
-        return(
-            <div className="container">
-                
-                <div className="Graph-Wrapper">
-                    <br/>
-                active
-                   {active}
-                   <br/>
-                confirmed
-                   {confirmed}
-                   <br/>
-                deaths
-                   {deaths}
-                   <br/>
-                recovered
-                   {recovered}
-                   <br/>
-                    
+
+        return(<div>
+                    <Navbar />
+                    <div className="container">
+
+                        <CountryCaseBar 
+                            confirmed={confirmed}
+                            recovered={recovered}
+                            active={active}
+                            deaths={deaths}
+                        
+                            />
+
+                        <div className="Graph-Wrapper">
+
+                            <GraphLine 
+                                data={confirmed} 
+                                date={date} 
+                                type="Confirmed"
+                                />
+
+                            <GraphLine 
+                                data={recovered} 
+                                date={date} 
+                                type="Recovered"
+                                />
+
+                            <GraphLine 
+                                data={active} 
+                                date={date} 
+                                type="Active"
+                                />
+
+                            <GraphLine 
+                                data={deaths} 
+                                date={date} 
+                                type="Deaths"
+                                />
+                            
+                        </div>
+
+                    </div>
+
+                    <Footer />
+
                 </div>
-            </div>
+
         )
 
     }
 
 }
-
-
-/*
-<GraphLine data type="Confirmed"/>
-                    <GraphLine type="Recovered"/>
-                    <GraphLine type="Active"/>
-                    <GraphLine type="Death"/>*/
-                                
 
 export default Country
