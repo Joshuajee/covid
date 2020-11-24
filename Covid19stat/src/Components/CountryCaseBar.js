@@ -8,6 +8,22 @@ function CountryCaseBar(props){
     let active = props.active
     let deaths = props.deaths
 
+    confirmed.sort(function(a, b){
+        return  a - b
+    })
+
+    recovered.sort(function(a, b){
+        return  a - b
+    })
+
+    active.sort(function(a, b){
+        return  a - b
+    })
+
+    deaths.sort(function(a, b){
+        return  a - b
+    })
+
     let dailyConfirmed = confirmed[confirmed.length - 1] - confirmed[confirmed.length - 2]
     let dailyRecovered = recovered[recovered.length - 1] - recovered[recovered.length - 2]
     let dailyActive = active[active.length - 1] - active[active.length - 2]
@@ -31,12 +47,3 @@ function CountryCaseBar(props){
 
 
 export default CountryCaseBar
-
-
-/*
-
-            <Case number ={NewConfirmed} type = "Daily Confirmed Case" color ="#000000"/>
-            <Case number ={NewRecovered} type = "Daily Recovered Case" color ="#12f432"/>
-            <Case number ={NewDeaths} type = "Daily Death Case" color ="#ff0000"/>
-
- */

@@ -39,7 +39,6 @@ class Country extends React.Component{
                 active[i] = data[i].Active
                 date[i] = data[i].Date
                 
-
             }
 
             this.setState({
@@ -50,8 +49,10 @@ class Country extends React.Component{
 
     }
 
+    
 
     render(){
+    
 
         if(this.state.isLoading)
             return(<Loader />)
@@ -74,24 +75,28 @@ class Country extends React.Component{
                                 data={confirmed} 
                                 date={date} 
                                 type="Confirmed"
+                                countryName={country}
                                 />
 
                             <GraphLine 
                                 data={recovered} 
                                 date={date} 
                                 type="Recovered"
+                                countryName={country}
                                 />
 
                             <GraphLine 
                                 data={active} 
                                 date={date} 
                                 type="Active"
+                                countryName={country}
                                 />
 
                             <GraphLine 
                                 data={deaths} 
                                 date={date} 
                                 type="Deaths"
+                                countryName={country}
                                 />
                             
                         </div>

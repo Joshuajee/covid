@@ -2,13 +2,15 @@ import React from 'react'
 import {Bar} from 'react-chartjs-2'
 
 
-//Variables
+//variables
 var options;
 var data;
 var maxLength;
 
 
-function graphHandler(type, plotData, plotDate, position, maxData = 20){
+function graphHandler(type, plotData, plotDate, position, maxData = 20, countryName=""){
+
+    plotDate.sort()
 
     var chartData = chop(plotData, plotDate, position, maxData)
 
@@ -28,7 +30,7 @@ function graphHandler(type, plotData, plotDate, position, maxData = 20){
     options = {
         title:{
             display:true,
-            text: "Showing Culmulative " + start + " to " + position + " Daily "+ type +" case by Country ",
+            text: "Showing culmulative " + start + " to day " + position + " " + type + " case in "+ countryName,
             fontSize:15
         },
         legend:{
@@ -68,9 +70,7 @@ class GraphLine extends React.Component{
             max: maxLength
         }
         
- 
-        
-        //Binds the events
+        //binds the events
         this.close = this.close.bind(this)
         this.handleEvent = this.handleEvent.bind(this)
 
@@ -89,22 +89,25 @@ class GraphLine extends React.Component{
                 position : parseInt(value)
         })
     }
-    
+
+    //method for positioning the chart at the end
+    componentDidMount(){
+        this.setState({
+            position : parseInt(maxLength)
+        })
+    }
+
+  
     render(){
 
-        graphHandler(this.props.type, this.props.data, this.props.date, this.state.position)
-        
+        graphHandler(this.props.type, this.props.data, this.props.date, this.state.position, 20, this.props.countryName)
+
         return(
             <div className="Graph">
-                
-                <div>
 
-                    <Bar
-                        data={data}
-                        options={options}
-                        />
-                
-                </div>
+                <Bar
+                    data={data}
+                    options={options} />
 
                 <input 
                     type="range" 
@@ -113,6 +116,7 @@ class GraphLine extends React.Component{
                     value={this.state.position} 
                     step={1} 
                     onChange={this.handleEvent} />
+
             </div>
             )
      
