@@ -205,3 +205,37 @@ th {
 .tableText{
     color:rgb(99, 96, 96);
 }
+
+
+@media only screen and (max-width: 600px) {
+    .caseBar{
+        margin: 1%;
+        margin-left: 2%;
+        margin-right: 2%;
+        width: 90vw;
+ 
+    }
+
+
+    .Graph{
+        margin: 1%;
+        margin-left: 2%;
+        margin-right: 2%;
+        width: 90vw;
+    }
+    
+    .Graph-Wrapper{
+        margin: 1%;
+        margin-left: 2%;
+        margin-right: 2%;
+      
+    }
+    
+    .stat-bar{
+        margin: 1%;
+        margin-left: 2%;
+        margin-right: 2%;
+        width : 90vw !important;
+    }
+    
+  }
