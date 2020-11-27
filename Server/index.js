@@ -33,7 +33,7 @@ if(restart){
 //home api route
 app.get('/api/home', (req, res) =>{
     
-    summary.findOne({},(err, data) =>{
+    summary.findOne().sort("-_id").exec(function(err, data){
         console.log("Attempting to make retrieve data from mongodb")
         if(err){
             res.json({"err":err})

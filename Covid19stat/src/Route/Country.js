@@ -1,10 +1,12 @@
 import React from 'react'
 import axios from 'axios'
 import Loader from '../Components/Loader'
+import GraphCountry from '../Components/GraphCountry'
 import GraphLine from '../Components/GraphLine'
 import CountryCaseBar from '../Components/CountryCaseBar'
 import Navbar from '../Components/NavBar'
 import Footer from '../Components/Footer'
+import Failed from '../Components/Failed'
 
 
 var confirmed = []
@@ -12,6 +14,13 @@ var recovered = []
 var deaths = []
 var active = []
 var date = []
+
+var confirmed_daily = []
+var recovered_daily = []
+var deaths_daily = []
+var active_daily = []
+var date_daily = []
+
 var country = ""
 
 class Country extends React.Component{
@@ -37,12 +46,23 @@ class Country extends React.Component{
                 recovered[i] = data[i].Recovered
                 deaths[i] = data[i].Deaths
                 active[i] = data[i].Active
-                date[i] = data[i].Date
+                date[i] = data[i].Date.substring(0, 10)
+                
+            }
+
+            for(let i = 1; i < data.length; i++){
+
+                confirmed_daily[i - 1] = data[i].Confirmed - data[i - 1].Confirmed
+                recovered_daily[i - 1] = data[i].Recovered - data[i - 1].Recovered
+                deaths_daily[i - 1] = data[i].Deaths - data[i - 1].Deaths
+                active_daily[i - 1] = data[i].Active //- data[i - 1].Active
+                date_daily[i - 1] = data[i].Date.substring(0, 10)
                 
             }
 
             this.setState({
-                isLoading : false
+                isLoading : false,
+                failed : false
             })
 
         })
@@ -56,6 +76,9 @@ class Country extends React.Component{
 
         if(this.state.isLoading)
             return(<Loader />)
+        
+        if(this.state.failed)
+            return(<Failed />)
 
         return(<div>
                     <Navbar />
@@ -71,30 +94,58 @@ class Country extends React.Component{
 
                         <div className="Graph-Wrapper">
 
-                            <GraphLine 
+                            <GraphCountry
                                 data={confirmed} 
                                 date={date} 
                                 type="Confirmed"
                                 countryName={country}
                                 />
 
-                            <GraphLine 
+                            <GraphCountry
                                 data={recovered} 
                                 date={date} 
                                 type="Recovered"
                                 countryName={country}
                                 />
 
-                            <GraphLine 
+                            <GraphCountry
                                 data={active} 
                                 date={date} 
                                 type="Active"
                                 countryName={country}
                                 />
 
-                            <GraphLine 
+                            <GraphCountry
                                 data={deaths} 
                                 date={date} 
+                                type="Deaths"
+                                countryName={country}
+                                />
+                            
+                            <GraphLine
+                                data={confirmed_daily} 
+                                date={date_daily} 
+                                type="Confirmed"
+                                countryName={country}
+                                />
+
+                            <GraphLine 
+                                data={recovered_daily} 
+                                date={date_daily} 
+                                type="Recovered"
+                                countryName={country}
+                                />
+
+                            <GraphLine 
+                                data={active_daily} 
+                                date={date_daily} 
+                                type="Active"
+                                countryName={country}
+                                />
+
+                            <GraphLine 
+                                data={deaths_daily} 
+                                date={date_daily} 
                                 type="Deaths"
                                 countryName={country}
                                 />

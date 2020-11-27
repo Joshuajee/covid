@@ -6,7 +6,7 @@ function Navbar(){
     return(
         <div className="navbar">
             <img src={Logo} className="navbar-logo" alt="logo"/>
-             Covid19 Stat </div>
+             Covid19 Info </div>
     )
 }
 

@@ -1,5 +1,5 @@
 import React from 'react'
-import {Bar, Line} from 'react-chartjs-2'
+import {Bar} from 'react-chartjs-2'
 
 
 //variables
@@ -30,7 +30,7 @@ function graphHandler(type, plotData, plotDate, position, maxData = 20, countryN
     options = {
         title:{
             display:true,
-            text: "Showing daily reported case from day " + start + " to day " + position + " " + type + " case in "+ countryName,
+            text: "Showing culmulative " + start + " to day " + position + " " + type + " case in "+ countryName,
             fontSize:15
         },
         legend:{
@@ -60,7 +60,7 @@ function chop(data, date, postion, maxData){
 
 
 
-class GraphLine extends React.Component{
+class GraphCountry extends React.Component{
 
     constructor(){
         super()
@@ -105,7 +105,7 @@ class GraphLine extends React.Component{
         return(
             <div className="Graph">
 
-                <Line
+                <Bar
                     data={data}
                     options={options} />
 
@@ -124,4 +124,4 @@ class GraphLine extends React.Component{
 
 }
 
-export default GraphLine
+export default GraphCountry

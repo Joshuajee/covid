@@ -6,7 +6,7 @@
 
 .navbar{
     grid-column: span 12;
-    height: 80px;
+    height: 50px;
     background-color: darkslategray;
     color: whitesmoke;
     margin-bottom: 15px;
@@ -18,7 +18,7 @@
 }
 
 .navbar-logo{
-    height: 80px;
+    height: 50px;
     margin: 10px;
 
 }
@@ -209,26 +209,34 @@ th {
 
 @media only screen and (max-width: 600px) {
     .caseBar{
-        margin: 1%;
-        margin-left: 2%;
-        margin-right: 2%;
+        margin: 1vw;
+        margin-left: 2vw;
+        margin-right: 2vw;
         width: 90vw;
  
     }
 
 
-    .Graph{
-        margin: 1%;
-        margin-left: 2%;
-        margin-right: 2%;
-        width: 90vw;
-    }
+    
     
     .Graph-Wrapper{
-        margin: 1%;
-        margin-left: 2%;
-        margin-right: 2%;
+        margin: 1vw;
+        margin-left: 2vw;
+        margin-right: 2vw;
+        width: 90vw;
+
       
+    }
+
+    .Graph{
+        width: 98%;
+    }
+
+    .tableWrapper{
+        margin: 1vw;
+        margin-left: 2vw;
+        margin-right: 2vw;
+        width: 90vw;
     }
     
     .stat-bar{

@@ -31,13 +31,11 @@ then(({data}) =>{
 
         let cron = require('node-cron');
  
-        let task = cron.schedule('*/30 * * * * *', () => {
+        let task = cron.schedule('* * * * *', () => {
 
             let  slug = data.Countries[count].Slug
 
             console.log("done " + count + "  " + slug)
-
-            
 
             let uri = "https://api.covid19api.com/dayone/country/"+data.Countries[count].Slug
 
