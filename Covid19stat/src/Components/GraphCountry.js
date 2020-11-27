@@ -10,7 +10,7 @@ var maxLength;
 
 function graphHandler(type, plotData, plotDate, position, maxData = 20, countryName=""){
 
-    plotDate.sort()
+    //plotDate.sort()
 
     var chartData = chop(plotData, plotDate, position, maxData)
 

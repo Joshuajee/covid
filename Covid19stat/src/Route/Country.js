@@ -28,7 +28,8 @@ class Country extends React.Component{
     constructor(){
         super()
         this.state={
-            isLoading : true
+            isLoading : true,
+            failed: false
         }
 
     }
@@ -49,6 +50,12 @@ class Country extends React.Component{
                 date[i] = data[i].Date.substring(0, 10)
                 
             }
+
+            confirmed.sort()
+            recovered.sort()
+            deaths.sort()
+            active.sort()
+            date.sort()
 
             for(let i = 1; i < data.length; i++){
 
