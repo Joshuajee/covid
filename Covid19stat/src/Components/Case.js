@@ -1,58 +1,84 @@
-import React ,{useState} from 'react'
-import GraphUI from './GraphUI'
+import React  from 'react'
+import GraphUI from './GraphPop'
+import GraphPop from './GraphPop';
 
 
-function Case(props){
-    let show = false
+class Case extends React.Component{
+   
+    constructor(){
+        super()
+        this.state = {
+            show : false
+        }
 
-    const [showChart, setShowChart] = useState(false);
+        //Binds the events
+        this.showChart = this.showChart.bind(this)
+    }
 
-    function showGraphUI() {
-        setShowChart(true)
+    showChart(){
+
+        this.setState(prevState => {
+
+            return {
+                show : prevState.show ? false : true
+            }
+
+        })
+
     }
     
-    
 
-    let bg = props.color
-    let chart = props.chart
+    render(){
 
-    let button = "hide"
-    if(chart)
-        button = "show  chart-btn"
+        let bg = this.props.color
+        let chart = this.props.chart
+        let show = this.state.show
 
-    if(show === true){
+        let button = "hide"
+        if(chart)
+            button = "show  chart-btn"
+
+        if(show)
+            
+            return(
+                <div className="case" style = {{backgroundColor: bg}} > 
         
+                    <div>
+                        {this.props.number}
+                    </div>
+        
+                    <div>
+                        {this.props.type}
+                    </div>
+
+                    <button onClick={this.showChart} class={button}> View Chart </button>
+                    
+                    
+
+                    <GraphPop />
+
+                </div>
+            )
+
         return(
             <div className="case" style = {{backgroundColor: bg}} > 
-    
+
                 <div>
-                    {props.number}
+                    {this.props.number}
                 </div>
-    
+
                 <div>
-                    {props.type}
+                    {this.props.type}
                 </div>
-               <button onClick={showGraphUI} class={button}> View Chart </button>
-                <GraphUI show={true} />
+     
+            <button onClick={this.showChart} class={button}> View Chart  </button>
+           
             </div>
+        
         )
-    }else
-    return(
-        <div className="case" style = {{backgroundColor: bg}} > 
 
-            <div>
-                {props.number}
-            </div>
+    }
 
-            <div>
-                {props.type}
-            </div>
-            {showChart}
-           <button onClick={showGraphUI} class={button}> View Chart  </button>
-
-        </div>
-      
-    )
 } 
 
 

@@ -1,5 +1,5 @@
 import React from 'react'
-import {Bar, Line} from 'react-chartjs-2'
+import {Line} from 'react-chartjs-2'
 
 
 //variables
@@ -9,8 +9,6 @@ var maxLength;
 
 
 function graphHandler(type, plotData, plotDate, position, maxData = 20, countryName=""){
-
-    //plotDate.sort()
 
     var chartData = chop(plotData, plotDate, position, maxData)
 
@@ -74,10 +72,6 @@ class GraphLine extends React.Component{
         this.close = this.close.bind(this)
         this.handleEvent = this.handleEvent.bind(this)
 
-    }
-
-    close() {
-        this.setState({ close : "hide" })
     }
 
     //method for scrolling the chart

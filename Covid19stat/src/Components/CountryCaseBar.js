@@ -32,13 +32,13 @@ function CountryCaseBar(props){
     return(
         <div className="caseBar">
 
-            <Case number ={confirmed[confirmed.length - 1]} type = "Total Confirmed Case" color ="#000000" chart={true} />
-            <Case number ={recovered[recovered.length - 1]} type = "Total Recovered Case" color ="#12f432" chart={true} />
-            <Case number ={active[active.length - 1]} type = "Total Active Case" color ="#701722" chart={true} />
-            <Case number ={deaths[deaths.length - 1]} type = "Total Death Case" color ="#ff0000" chart={true} />
-            <Case number ={dailyConfirmed} type = "Daily Confirmed Case" color ="#000000"/>
-            <Case number ={dailyRecovered} type = "Daily Recovered Case" color ="#12f432"/>
-            <Case number ={dailyDeaths} type = "Daily Death Case" color ="#ff0000"/>
+            <Case number ={confirmed[confirmed.length - 1]} type = "Total Confirmed Case" color ="#000000"  />
+            <Case number ={recovered[recovered.length - 1]} type = "Total Recovered Case" color ="#12f432" />
+            <Case number ={active[active.length - 1]} type = "Total Active Case" color ="#701722" />
+            <Case number ={deaths[deaths.length - 1]} type = "Total Death Case" color ="#ff0000" />
+            <Case number ={dailyConfirmed} type = "Daily Confirmed Case" color ="#000000" />
+            <Case number ={dailyRecovered} type = "Daily Recovered Case" color ="#12f432" />
+            <Case number ={dailyDeaths} type = "Daily Death Case" color ="#ff0000" />
         
 
         </div>

@@ -64,6 +64,7 @@
     grid-column: span 12;
     overflow-x: auto;
     z-index: 10px;
+    height:900px;
     -webkit-box-shadow: -1px 1px 15px 2px rgba(0,0,0,0.75);
     -moz-box-shadow: -1px 1px 15px 2px rgba(0,0,0,0.75);
     box-shadow: -1px 1px 15px 2px rgba(0,0,0,0.75);
@@ -122,13 +123,13 @@ th {
 
 .GraphModal{
     width: 96%;
-    min-height: 200px;
+    min-height: 300px;
     position: fixed;
     right: 2%;
     left: 2%;
     top: 30px;
     background-color:white;
-    z-index: 10px;
+    z-index: 20px;
     -webkit-box-shadow: -1px 1px 15px 2px rgba(0,0,0,0.75);
     -moz-box-shadow: -1px 1px 15px 2px rgba(0,0,0,0.75);
     box-shadow: -1px 1px 15px 2px rgba(0,0,0,0.75);
@@ -215,10 +216,7 @@ th {
         width: 90vw;
  
     }
-
-
-    
-    
+ 
     .Graph-Wrapper{
         margin: 1vw;
         margin-left: 2vw;

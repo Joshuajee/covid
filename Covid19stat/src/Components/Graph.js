@@ -69,19 +69,13 @@ class Graph extends React.Component{
     constructor(){
         super()
         this.state = {
-            close : "show",
             position : 20,
             max: maxLength
         }
 
         
         //Binds the events
-        this.close = this.close.bind(this)
         this.handleEvent = this.handleEvent.bind(this)
-    }
-
-    close() {
-        this.setState({ close : "hide" })
     }
 
     //method for scrolling the chart
