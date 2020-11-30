@@ -6,9 +6,10 @@ import {Line} from 'react-chartjs-2'
 var options;
 var data;
 var maxLength;
+var dataLength = 30;
 
 
-function graphHandler(type, plotData, plotDate, position, maxData = 20, countryName=""){
+function graphHandler(type, plotData, plotDate, position, maxData, countryName=""){
 
     var chartData = chop(plotData, plotDate, position, maxData)
 
@@ -28,7 +29,7 @@ function graphHandler(type, plotData, plotDate, position, maxData = 20, countryN
     options = {
         title:{
             display:true,
-            text: "Showing daily reported case from day " + start + " to day " + position + " " + type + " case in "+ countryName,
+            text: "Showing  " + start + " to day " + position + " " + type + " case in "+ countryName,
             fontSize:15
         },
         legend:{
@@ -47,6 +48,7 @@ function chop(data, date, postion, maxData){
     let data2 = []
     let start  = postion - maxData
 
+    console.log("MaxData " + maxData)
     maxLength = data.length
 
     for(let i = 0; i < maxData; i++){
@@ -64,12 +66,12 @@ class GraphLine extends React.Component{
         super()
         this.state = {
             close : "show",
-            position : 20,
+            position : dataLength,
             max: maxLength
         }
+
         
         //binds the events
-        this.close = this.close.bind(this)
         this.handleEvent = this.handleEvent.bind(this)
 
     }
@@ -91,21 +93,29 @@ class GraphLine extends React.Component{
         })
     }
 
+    
   
     render(){
 
-        graphHandler(this.props.type, this.props.data, this.props.date, this.state.position, 20, this.props.countryName)
+ 
+        if(window.innerWidth < 600){
+            dataLength = 10
+        }
+
+        graphHandler(this.props.type, this.props.data, this.props.date, this.state.position, dataLength, this.props.countryName)
 
         return(
             <div className="Graph">
 
                 <Line
                     data={data}
+                    width={100}
+                    height={50}
                     options={options} />
 
                 <input 
                     type="range" 
-                    min={20} 
+                    min={dataLength} 
                     max={maxLength} 
                     value={this.state.position} 
                     step={1} 

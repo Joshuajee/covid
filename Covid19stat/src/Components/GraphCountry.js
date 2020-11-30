@@ -2,13 +2,15 @@ import React from 'react'
 import {Bar} from 'react-chartjs-2'
 
 
+
 //variables
 var options;
 var data;
 var maxLength;
+var dataLength = 30
 
 
-function graphHandler(type, plotData, plotDate, position, maxData = 20, countryName=""){
+function graphHandler(type, plotData, plotDate, position, maxData, countryName=""){
 
     //plotDate.sort()
 
@@ -17,7 +19,7 @@ function graphHandler(type, plotData, plotDate, position, maxData = 20, countryN
     data = {
         labels : chartData[1],
         datasets: [{
-            label: "Country",
+            label: countryName,
             backgroundColor: 'rgba(75, 192, 192, 1)',
             borderColor: 'rgba(0, 0, 0, 1)',
             borderWidth: 2,
@@ -32,11 +34,8 @@ function graphHandler(type, plotData, plotDate, position, maxData = 20, countryN
             display:true,
             text: "Showing culmulative " + start + " to day " + position + " " + type + " case in "+ countryName,
             fontSize:15
-        },
-        legend:{
-            display:false,
-            position: "top"
         }
+       
     }
 
 }
@@ -71,13 +70,8 @@ class GraphCountry extends React.Component{
         }
         
         //binds the events
-        this.close = this.close.bind(this)
         this.handleEvent = this.handleEvent.bind(this)
 
-    }
-
-    close() {
-        this.setState({ close : "hide" })
     }
 
     //method for scrolling the chart
@@ -100,22 +94,32 @@ class GraphCountry extends React.Component{
   
     render(){
 
-        graphHandler(this.props.type, this.props.data, this.props.date, this.state.position, 20, this.props.countryName)
+        if(window.innerWidth < 600){
+            dataLength = 10
+        }
+
+        graphHandler(this.props.type, this.props.data, this.props.date, this.state.position, dataLength, this.props.countryName)
 
         return(
             <div className="Graph">
 
                 <Bar
+                    className="chart"
+                    width={100}
+                    height={50}
                     data={data}
                     options={options} />
 
                 <input 
                     type="range" 
-                    min={20} 
+                    min={dataLength} 
                     max={maxLength} 
                     value={this.state.position} 
                     step={1} 
                     onChange={this.handleEvent} />
+
+
+          
 
             </div>
             )

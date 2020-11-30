@@ -51,19 +51,30 @@ class Country extends React.Component{
                 
             }
 
-            confirmed.sort()
-            recovered.sort()
-            deaths.sort()
-            active.sort()
-            date.sort()
+            confirmed.sort(function(a, b){
+                return  b - a
+            })
+        
+            recovered.sort(function(a, b){
+                return  b - a
+            })
 
+            deaths.sort(function(a, b){
+                return  b - a
+            })
+
+            active.sort(function(a, b){
+                return  b - a
+            })
+
+            date.sort()
             for(let i = 1; i < data.length; i++){
 
-                confirmed_daily[i - 1] = data[i].Confirmed - data[i - 1].Confirmed
-                recovered_daily[i - 1] = data[i].Recovered - data[i - 1].Recovered
-                deaths_daily[i - 1] = data[i].Deaths - data[i - 1].Deaths
-                active_daily[i - 1] = data[i].Active //- data[i - 1].Active
-                date_daily[i - 1] = data[i].Date.substring(0, 10)
+                confirmed_daily[i - 1] = confirmed[i - 1] - confirmed[i]
+                recovered_daily[i - 1] = recovered[i - 1] - recovered[i]
+                deaths_daily[i - 1] = deaths[i - 1] - deaths[i]
+                active_daily[i - 1] = active[i - 1] - active[i]
+                date_daily[i - 1] = date[i].substring(0, 10)
                 
             }
 
@@ -80,6 +91,7 @@ class Country extends React.Component{
 
     render(){
     
+     
 
         if(this.state.isLoading)
             return(<Loader />)

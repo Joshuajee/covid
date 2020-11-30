@@ -6,9 +6,10 @@ import {Bar} from 'react-chartjs-2'
 var options;
 var data;
 var maxLength;
+var dataLength = 20
 
 
-function graphHandler(type, plotData, position, maxData = 20){
+function graphHandler(type, plotData, position, maxData){
     
     plotData.sort(function(a, b){
         return  b[1] - a[1]
@@ -21,7 +22,7 @@ function graphHandler(type, plotData, position, maxData = 20){
     data = {
         labels : chartData[0],
         datasets: [{
-            label: "Country",
+            label: "Countrires",
             backgroundColor: 'rgba(75, 192, 192, 1)',
             borderColor: 'rgba(0, 0, 0, 1)',
             borderWidth: 2,
@@ -37,10 +38,6 @@ function graphHandler(type, plotData, position, maxData = 20){
             text: "Showing Top " + start + " to " + position + " Daily "+ type +" case by Country ",
             fontSize:15
         },
-        legend:{
-            display:false,
-            position: "top"
-        }
     }
 
 }
@@ -90,18 +87,25 @@ class Graph extends React.Component{
     }
     
     render(){
-        graphHandler(this.props.type, this.props.data, this.state.position)
+
+        if(window.innerWidth < 600){
+            dataLength = 10
+        }
+
+        graphHandler(this.props.type, this.props.data, this.state.position, dataLength)
         return(
             <div className="Graph">
                 <div>
                     <Bar
+                        width={100}
+                        height={50}
                         data={data}
                         options={options}
                         />
                 
                 </div>
                 <input 
-                    type="range" min={20} 
+                    type="range" min={dataLength} 
                     max={maxLength} 
                     value={this.state.position} 
                     step={1} 

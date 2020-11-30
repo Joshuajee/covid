@@ -8,8 +8,6 @@ import Home from './Route/Home'
 import Country from './Route/Country'
 
 
-   
-
 const home = () => <Home />
 ReactDOM.render(
   <React.StrictMode>
