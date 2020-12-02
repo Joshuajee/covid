@@ -8,11 +8,10 @@ var options;
 var data;
 var maxLength;
 var dataLength = 30
+var graphHeight = 50
 
 
 function graphHandler(type, plotData, plotDate, position, maxData, countryName=""){
-
-    //plotDate.sort()
 
     var chartData = chop(plotData, plotDate, position, maxData)
 
@@ -63,9 +62,16 @@ class GraphCountry extends React.Component{
 
     constructor(){
         super()
+        
+
+        if(window.innerWidth < 600){
+            dataLength = 10
+            graphHeight = 100
+        }
+
         this.state = {
             close : "show",
-            position : 20,
+            position : dataLength,
             max: maxLength
         }
         
@@ -96,6 +102,7 @@ class GraphCountry extends React.Component{
 
         if(window.innerWidth < 600){
             dataLength = 10
+            graphHeight = 100
         }
 
         graphHandler(this.props.type, this.props.data, this.props.date, this.state.position, dataLength, this.props.countryName)
@@ -106,7 +113,7 @@ class GraphCountry extends React.Component{
                 <Bar
                     className="chart"
                     width={100}
-                    height={50}
+                    height={graphHeight}
                     data={data}
                     options={options} />
 

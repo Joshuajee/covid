@@ -7,6 +7,7 @@ var options;
 var data;
 var maxLength;
 var dataLength = 30;
+var graphHeight = 50
 
 
 function graphHandler(type, plotData, plotDate, position, maxData, countryName=""){
@@ -64,6 +65,12 @@ class GraphLine extends React.Component{
 
     constructor(){
         super()
+
+        if(window.innerWidth < 600){
+            dataLength = 10
+            graphHeight = 100
+        }
+      
         this.state = {
             close : "show",
             position : dataLength,
@@ -97,9 +104,9 @@ class GraphLine extends React.Component{
   
     render(){
 
- 
         if(window.innerWidth < 600){
             dataLength = 10
+            graphHeight = 100
         }
 
         graphHandler(this.props.type, this.props.data, this.props.date, this.state.position, dataLength, this.props.countryName)
@@ -110,7 +117,7 @@ class GraphLine extends React.Component{
                 <Line
                     data={data}
                     width={100}
-                    height={50}
+                    height={graphHeight}
                     options={options} />
 
                 <input 

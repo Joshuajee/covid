@@ -7,6 +7,7 @@ var options;
 var data;
 var maxLength;
 var dataLength = 20
+var graphHeight = 50
 
 
 function graphHandler(type, plotData, position, maxData){
@@ -65,8 +66,14 @@ class Graph extends React.Component{
 
     constructor(){
         super()
+
+        if(window.innerWidth < 600){
+            dataLength = 10
+            graphHeight = 100
+        }
+
         this.state = {
-            position : 20,
+            position : dataLength,
             max: maxLength
         }
 
@@ -90,6 +97,8 @@ class Graph extends React.Component{
 
         if(window.innerWidth < 600){
             dataLength = 10
+            graphHeight = 100
+
         }
 
         graphHandler(this.props.type, this.props.data, this.state.position, dataLength)
@@ -98,7 +107,7 @@ class Graph extends React.Component{
                 <div>
                     <Bar
                         width={100}
-                        height={50}
+                        height={graphHeight}
                         data={data}
                         options={options}
                         />
