@@ -33,10 +33,14 @@ then(({data}) =>{
  
         let task = cron.schedule('* * * * *', () => {
 
-            let  slug = data.Countries[count].Slug
+            let slug = data.Countries[count].Slug
 
             console.log("done " + count + "  " + slug)
 
+            country.findOne({CountrySlug: slug }, (err, data)=>{
+                if(err){
+                   
+                    
             let uri = "https://api.covid19api.com/dayone/country/"+data.Countries[count].Slug
 
             axios.get(uri).
@@ -80,6 +84,14 @@ then(({data}) =>{
 
             })
 
+
+                }else{
+
+                    
+                }
+            })
+
+
             count++
 
             if(count + 1 >= len) task.destroy();
@@ -90,20 +102,3 @@ then(({data}) =>{
 }).catch(({error}) =>{
     console.log("error")
 })
-
-
-
-
-       /* 
-       const con = new country()
-
-        con.Country = 
-        con.CountrySlug
-        con.Confirmed
-        con.Deaths
-        con.Recovered
-        con.Active
-
-        con.Save()
-
-*/

@@ -23,7 +23,7 @@ db.on('error', console.error.bind(console, 'MongoDB connection error:'))
 
 
 //set to true if you want to restart the app else set to false
-const  restart = false
+const  restart = true
 
 if(restart){
     require('./start')
@@ -39,9 +39,30 @@ app.get('/api/home', (req, res) =>{
             res.json({"err":err})
             console.log("Failed to retrieve data")
         }else{
+
             res.json({response:data})
             console.log(data)
+
+            console.log(data.Countries.length)
+            
+            for(let i  = 0; i < data.Countries.length; i++){
+        
+              let country_obj = new country()
+        
+              country_obj.CountrySlug = data.Countries[i].Slug 
+              country_obj.Country = data.Countries[i].Country
+              country_obj.Confirmed = data.Countries[i].Confirmed
+              country_obj.Recovered = data.Countries[i].Recovered
+              country_obj.Active = data.Countries[i].Active
+              country_obj.Deaths = data.Countries[i].Deaths
+              country_obj.Date = data.Countries[i].Date
+        
+              country_obj.save()
+        
+            }
+
         }
+
     })
   
 })

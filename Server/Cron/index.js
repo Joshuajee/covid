@@ -40,7 +40,7 @@ db.on('error', console.error.bind(console, 'MongoDB connection error:'))
 
       let country_obj = new country()
 
-      country_obj.CountrySlug = slug
+      country_obj.CountrySlug = data.data.Countries[i].Slug
       country_obj.Country = data.data.Countries[i].Country
       country_obj.Confirmed = data.data.Countries[i].Confirmed
       country_obj.Recovered = data.data.Countries[i].Recovered
