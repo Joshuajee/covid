@@ -17,10 +17,9 @@ const db = mongoose.connection
 //Bind connection to error event (to get notification of connection errors)
 db.on('error', console.error.bind(console, 'MongoDB connection error:'))
 
-
-var countriesSlug = []
 var len = null
 
+console.log("RRR")
 
 axios.get("https://api.covid19api.com/summary").
 then(({data}) =>{
@@ -37,8 +36,8 @@ then(({data}) =>{
 
             console.log("done " + count + "  " + slug)
 
-            country.findOne({CountrySlug: slug }, (err, data)=>{
-                if(err){
+            //country.findOne({CountrySlug: slug }, (err, data)=>{
+             //   if(err){
                    
                     
             let uri = "https://api.covid19api.com/dayone/country/"+data.Countries[count].Slug
@@ -85,12 +84,10 @@ then(({data}) =>{
             })
 
 
-                }else{
+              //  }else{
 
                     
-                }
-            })
-
+              //  }
 
             count++
 
