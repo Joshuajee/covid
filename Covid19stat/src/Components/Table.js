@@ -49,6 +49,49 @@ class Table extends React.Component{
             sortByDailyActive:false,
             sortByCountry:false
         }
+        /*
+        this.countrySort = this.countrySort.bind(this)
+        this.confirmedSort = this.confirmedSort.bind(this)
+        this.recoveredSort = this.recoveredSort.bind(this)
+        this.activeSort = this.activeSort.bind(this)
+        this.deathSort = this.deathSort.bind(this)
+        this.dailyConfirmedSort = this.dailyConfirmedSort.bind(this)
+        this.dailyRecoveredSort = this.dailyRecoveredSort.bind(this)
+        this.dailyRiseSort = this.dailyRiseSort.bind(this)
+        this.dailyDeathsSort = this.dailyDeathsSort.bind(this)
+
+*/
+    }
+
+    countrySort(){
+
+    }
+
+    confirmedSort(){
+
+    }
+
+    recoveredSort(){
+
+    }
+
+    activeSort(){
+
+    }
+
+    deathSort(){
+
+    }
+
+    dailyRecoveredSort(){
+
+    }
+
+    dailyRiseSort(){
+
+    }
+
+    dailyDeathsSort(){
 
     }
 
@@ -65,8 +108,8 @@ class Table extends React.Component{
 
                         <tr>
                             <th>S/N</th>
-                            <th>Country</th>
-                            <th>Confirmed Case</th>
+                            <th >Country</th>
+                            <th >Confirmed Case</th>
                             <th>Recovered Case</th>
                             <th>Active Case</th>
                             <th>Total Deaths</th>

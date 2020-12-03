@@ -31,7 +31,7 @@ then(({data}) =>{
 
         let cron = require('node-cron');
  
-        let task = cron.schedule('* * * * *', () => {
+        let task = cron.schedule('*/15 * * * *', () => {
 
             let slug = data.Countries[count].Slug
 
