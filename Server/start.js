@@ -30,15 +30,12 @@ then(({data}) =>{
 
         let cron = require('node-cron');
  
-        let task = cron.schedule('*/15 * * * *', () => {
+        let task = cron.schedule('*/10 * * * * *', () => {
 
             let slug = data.Countries[count].Slug
 
             console.log("done " + count + "  " + slug)
 
-            //country.findOne({CountrySlug: slug }, (err, data)=>{
-             //   if(err){
-                   
                     
             let uri = "https://api.covid19api.com/dayone/country/"+data.Countries[count].Slug
 
@@ -61,7 +58,7 @@ then(({data}) =>{
 
                     countryModel.deleteMany({ CountrySlug: slug }, function (err) {
                         if (err) return handleError(err);
-                        // deleted at most one tank document
+
                         console.log("deleted")
                       });
                     
