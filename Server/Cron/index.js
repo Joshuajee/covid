@@ -22,7 +22,7 @@ db.on('error', console.error.bind(console, 'MongoDB connection error:'))
 
 
 
- cron.schedule('* 21 * * *', () => {
+ cron.schedule('* 20 * * *', () => {
 
   console.log("cron activated")
   axios.get("https://api.covid19api.com/summary").

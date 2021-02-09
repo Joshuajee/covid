@@ -211,6 +211,9 @@ th {
 
 
 @media only screen and (max-width: 600px) {
+    body{
+        font-size: medium;
+    }
     .caseBar{
         margin: 3%;
         width: 90vw;

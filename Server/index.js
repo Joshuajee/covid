@@ -2,6 +2,8 @@ const express = require('express')
 const mongoose = require('mongoose')
 const config = require("./Config/config")
 
+//update the database daily
+require("./Cron")
 
 //Create an express app
 const app = express()
@@ -23,7 +25,7 @@ db.on('error', console.error.bind(console, 'MongoDB connection error:'))
 
 
 //set to true if you want to restart the app else set to false
-const  restart = true
+const  restart = false
 
 if(restart){
     require('./start')
