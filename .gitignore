@@ -13,7 +13,7 @@ Server/Config/dev.js
 /coverage
 
 # production
-/build
+Covid19stat/build
 
 # misc
 .DS_Store
