@@ -1,5 +1,5 @@
 import React from 'react'
-import {Link} from 'react-router-dom'
+
 
 function TableRow(props){
     
@@ -9,25 +9,20 @@ function TableRow(props){
 
 
     return( 
-        <tr> 
-            <td><Link to={link}>{props.table[0]}</Link></td>
-            <td><Link to={link}>{props.table[1][0]} </Link></td>
-            <td><Link to={link}>{props.table[1][1]} </Link></td>
-            <td><Link to={link}>{props.table[1][2]} </Link></td>
-            <td><Link to={link}>{active} </Link></td>
-            <td><Link to={link}>{props.table[1][3]} </Link></td>
-            <td><Link to={link}>{props.table[1][5]} </Link></td>
-            <td><Link to={link}>{props.table[1][6]} </Link></td>
-            <td><Link to={link}>{activeNew} </Link></td>
-            <td><Link to={link}>{props.table[1][7]} </Link></td>
+        <tr onClick={()=> props.clickEvent(link)}> 
+            <td>{props.table[0]}</td>
+            <td>{props.table[1][0]} </td>
+            <td>{props.table[1][1]} </td>
+            <td>{props.table[1][2]} </td>
+            <td>{active} </td>
+            <td>{props.table[1][3]} </td>
+            <td>{props.table[1][5]} </td>
+            <td>{props.table[1][6]} </td>
+            <td>{activeNew} </td>
+            <td>{props.table[1][7]} </td>
         </tr>
 
             )
 }
 
 export default TableRow
-
-/*
-
- 
-*/

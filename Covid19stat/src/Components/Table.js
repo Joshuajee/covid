@@ -1,9 +1,10 @@
+import {Redirect} from 'react-router-dom'
+
 import React from 'react'
 import TableRow from './TableRow'
 
-
 //function to handle json data
-function dataHandler(mydata){
+function dataHandler(mydata, clickEvent){
 
     var data = []
     for (let i = 0; i < mydata.length; i++) {
@@ -29,7 +30,7 @@ function dataHandler(mydata){
                     
         }
 
-        return data.map(property => <TableRow table={property} />)
+        return data.map(property => <TableRow table={property} clickEvent={clickEvent}  />)
 }
 
 class Table extends React.Component{
@@ -47,7 +48,9 @@ class Table extends React.Component{
             sortByDailyRecovered:false,
             sortByDailyDeaths:false,
             sortByDailyActive:false,
-            sortByCountry:false
+            sortByCountry:false,
+            redirect:false,
+            link:"home"
         }
         /*
         this.countrySort = this.countrySort.bind(this)
@@ -61,6 +64,7 @@ class Table extends React.Component{
         this.dailyDeathsSort = this.dailyDeathsSort.bind(this)
 
 */
+        this.clickEvent = this.clickEvent.bind(this)
     }
 
     countrySort(){
@@ -96,8 +100,22 @@ class Table extends React.Component{
     }
 
 
+    clickEvent(link){
+        this.setState({
+            link:link,
+            redirect:true
+        })
+    }
+
  
     render(){
+
+        if (this.state.redirect) {
+            this.setState({
+                redirect:false
+            })
+            return <Redirect to={this.state.link}/>;
+          }
     
         return(
             <div className="tableWrapper">
@@ -122,7 +140,7 @@ class Table extends React.Component{
                     </thead>
                     
                     <tbody>
-                        {dataHandler(this.props.data)}
+                        {dataHandler(this.props.data, this.clickEvent)}
                     </tbody>
 
                 </table>
