@@ -14,10 +14,10 @@ function CaseBar(props){
 
     return(
         <div className="caseBar">
-            <Case number ={TotalConfirmed} type = "Total Confirmed Case" color ="#000000" chart={true} />
-            <Case number ={TotalRecovered} type = "Total Recovered Case" color ="#12f432" chart={true} />
-            <Case number ={TotalActive} type = "Total Active Case" color ="#701722" chart={true} />
-            <Case number ={TotalDeaths} type = "Total Death Case" color ="#ff0000" chart={true} />
+            <Case number ={TotalConfirmed} type = "Total Confirmed Case" color ="#000000" chart={false} />
+            <Case number ={TotalRecovered} type = "Total Recovered Case" color ="#12f432" chart={false} />
+            <Case number ={TotalActive} type = "Total Active Case" color ="#701722" chart={false} />
+            <Case number ={TotalDeaths} type = "Total Death Case" color ="#ff0000" chart={false} />
             <Case number ={NewConfirmed} type = "Daily Confirmed Case" color ="#000000"/>
             <Case number ={NewRecovered} type = "Daily Recovered Case" color ="#12f432"/>
             <Case number ={NewDeaths} type = "Daily Death Case" color ="#ff0000"/>
