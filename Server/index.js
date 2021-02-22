@@ -45,24 +45,6 @@ app.get('/api/home', (req, res) =>{
             res.json({response:data})
             console.log(data)
 
-            console.log(data.Countries.length)
-            
-            for(let i  = 0; i < data.Countries.length; i++){
-        
-              let country_obj = new country()
-        
-              country_obj.CountrySlug = data.Countries[i].Slug 
-              country_obj.Country = data.Countries[i].Country
-              country_obj.Confirmed = data.Countries[i].Confirmed
-              country_obj.Recovered = data.Countries[i].Recovered
-              country_obj.Active = data.Countries[i].Active
-              country_obj.Deaths = data.Countries[i].Deaths
-              country_obj.Date = data.Countries[i].Date
-        
-              country_obj.save()
-        
-            }
-
         }
 
     })
@@ -78,12 +60,69 @@ app.get('/api/country/:country', (req, res) =>{
             res.json({"err":err})
             console.log("Failed to retrieve data " + err)
         }else{
-            res.send(data)
+
+            if(data.length <= 50){
+
+                res.send(data)
+
+            }else{
+                res.send(data)
+            }
             
         }
     })
 
 })
+
+/*
+
+function fetchCountry(country_slug){
+
+    let uri = "https://api.covid19api.com/dayone/country/" + country_slug
+
+            axios.get(uri).
+            then(country =>{
+
+                console.log(country.data.length)
+
+                let data = []
+
+                countryModel.deleteMany({ CountrySlug: slug }, function (err) {
+                    if (err) return handleError(err);
+
+                    console.log("deleted")
+                });
+
+                for(let i = 0; i < country.data.length; i++){
+
+                    console.log(slug)
+                    console.log(country.data[i].Country)
+                    console.log(country.data[i].Confirmed)
+                    console.log(country.data[i].Recovered)
+                    console.log(country.data[i].Active)
+                    console.log(country.data[i].Deaths)
+
+                    data.push({"CountrySlug": slug,
+                               "Country": country.data[i].Country,
+                               "Confirmed": country.data[i].Confirmed,
+                               "Recovered": country.data[i].Recovered,
+                               "Active" : country.data[i].Active,
+                               "Deaths" : country.data[i].Deaths,
+                               "Date" : country.data[i].Date})
+               
+                }
+
+                countryModel.insertMany(data)
+
+            }).catch(error =>{
+
+                console.log("error " + error)
+
+            })
+
+
+}
+*/
 
 
 //world api route

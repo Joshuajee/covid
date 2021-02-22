@@ -24,6 +24,7 @@ console.log("RRR")
 axios.get("https://api.covid19api.com/summary").
 then(({data}) =>{
 
+    console.log(data)
     len  = data.Countries.length
     
         let count = 0
@@ -37,12 +38,20 @@ then(({data}) =>{
             console.log("done " + count + "  " + slug)
 
                     
-            let uri = "https://api.covid19api.com/dayone/country/"+data.Countries[count].Slug
+            let uri = "https://api.covid19api.com/dayone/country/" + slug
 
             axios.get(uri).
             then(country =>{
 
                 console.log(country.data.length)
+
+                let data = []
+
+                countryModel.deleteMany({ CountrySlug: slug }, function (err) {
+                    if (err) return handleError(err);
+
+                    console.log("deleted")
+                });
 
                 for(let i = 0; i < country.data.length; i++){
 
@@ -53,38 +62,23 @@ then(({data}) =>{
                     console.log(country.data[i].Active)
                     console.log(country.data[i].Deaths)
 
-
-                    const country_obj = new countryModel()
-
-                    countryModel.deleteMany({ CountrySlug: slug }, function (err) {
-                        if (err) return handleError(err);
-
-                        console.log("deleted")
-                      });
-                    
-                    country_obj.CountrySlug = slug
-                    country_obj.Country = country.data[i].Country
-                    country_obj.Confirmed = country.data[i].Confirmed
-                    country_obj.Recovered = country.data[i].Recovered
-                    country_obj.Active = country.data[i].Active
-                    country_obj.Deaths = country.data[i].Deaths
-                    country_obj.Date = country.data[i].Date
-            
-                    country_obj.save()
+                    data.push({"CountrySlug": slug,
+                               "Country": country.data[i].Country,
+                               "Confirmed": country.data[i].Confirmed,
+                               "Recovered": country.data[i].Recovered,
+                               "Active" : country.data[i].Active,
+                               "Deaths" : country.data[i].Deaths,
+                               "Date" : country.data[i].Date})
                
                 }
+
+                countryModel.insertMany(data)
 
             }).catch(error =>{
 
                 console.log("error " + error)
 
             })
-
-
-              //  }else{
-
-                    
-              //  }
 
             count++
 
