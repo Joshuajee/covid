@@ -24,13 +24,6 @@ const db = mongoose.connection
 db.on('error', console.error.bind(console, 'MongoDB connection error:'))
 
 
-//set to true if you want to restart the app else set to false
-const  restart = true
-
-if(restart){
-    require('./start')
-}
-
 
 //home api route
 app.get('/api/home', (req, res) =>{
