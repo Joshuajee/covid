@@ -74,6 +74,7 @@
     background-color:white;
     border-collapse: collapse;
     z-index: 10px;
+    color: gray;
 }
 
 
@@ -177,7 +178,7 @@ th {
     margin-right: 5%;
     margin-left: 5%;
     text-align: center;
-    font-size: 40px;
+    font-size: 30px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -186,6 +187,7 @@ th {
     -webkit-box-shadow: -1px 1px 15px 2px rgba(0,0,0,0.75);
     -moz-box-shadow: -1px 1px 15px 2px rgba(0,0,0,0.75);
     box-shadow: -1px 1px 15px 2px rgba(0,0,0,0.75);
+    color: gray;
 }
 
 
@@ -212,21 +214,26 @@ th {
 
 @media only screen and (max-width: 600px) {
     body{
-        font-size: medium;
+    
+        font-size: 12px;
     }
     .caseBar{
         margin: 3%;
         width: 90vw;
+        font-size: 12px;
+    }
+    .case{
+        height: 50px;
+        font-size: 12px;
     }
  
     .Graph-Wrapper{
-        margin: 3vw;
+        margin: 1vw;
         width: 90vw;
         display: block;
     }
 
     .Graph{
-        margin: 3vw;
         width: 90vw !important;
     }
 
@@ -242,6 +249,7 @@ th {
         width : 90vw;
         display: grid;
     }
+
 
 
   }
