@@ -24,11 +24,6 @@ Install front-end dependency for development.<br/>
 
 Install back-end dependency for development.<br/>
 
-### `npm run build-front-end-dev`
-
-build front-end app for development.<br/>
-
-
 
 ### `npm run start-dev`
 
@@ -43,7 +38,6 @@ Open [http://localhost:5000](http://localhost:5000) to view it in the browser.<b
 The page will reload if you make edits.<br />
 You will also see any lint errors in the console.<br/>
 
-<b>NB: Should not be used in Production Environment </b>
 
 ### `npm run start`
 
@@ -58,8 +52,6 @@ Open [http://localhost:5000](http://localhost:5000) to view it in the browser.<b
 The page will reload if you make edits.<br />
 You will also see any lint errors in the console.
 
-<b>NB: Should not be used in Production Environment </b>
-
 ### `npm run front-end`
 
 Runs the fronted react app in the development mode.<br/>
@@ -68,7 +60,3 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.<b
 
 The page will reload if you make edits.<br />
 You will also see any lint errors in the console.
-
-<b>NB: Should not be used in Production Environment </b>
-
-
