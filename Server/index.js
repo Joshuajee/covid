@@ -1,5 +1,6 @@
 const express = require('express')
 const mongoose = require('mongoose')
+const axios = require('axios')
 const config = require("./Config/config")
 
 //update the database daily
@@ -56,7 +57,7 @@ app.get('/api/country/:country', (req, res) =>{
 
             if(data.length <= 50){
 
-                res.send(data)
+                fetchCountry(req.params.country, res)
 
             }else{
                 res.send(data)
@@ -67,35 +68,35 @@ app.get('/api/country/:country', (req, res) =>{
 
 })
 
-/*
 
-function fetchCountry(country_slug){
+
+function fetchCountry(country_slug, res){
 
     let uri = "https://api.covid19api.com/dayone/country/" + country_slug
-
             axios.get(uri).
             then(country =>{
 
-                console.log(country.data.length)
+                console.log(country)
 
                 let data = []
-
-                countryModel.deleteMany({ CountrySlug: slug }, function (err) {
+                /*
+                country.deleteMany({ CountrySlug: country_slug}, function (err) {
                     if (err) return handleError(err);
 
                     console.log("deleted")
                 });
+                */
 
                 for(let i = 0; i < country.data.length; i++){
 
-                    console.log(slug)
+                    console.log(country_slug)
                     console.log(country.data[i].Country)
                     console.log(country.data[i].Confirmed)
                     console.log(country.data[i].Recovered)
                     console.log(country.data[i].Active)
                     console.log(country.data[i].Deaths)
 
-                    data.push({"CountrySlug": slug,
+                    data.push({"CountrySlug": country_slug,
                                "Country": country.data[i].Country,
                                "Confirmed": country.data[i].Confirmed,
                                "Recovered": country.data[i].Recovered,
@@ -105,7 +106,13 @@ function fetchCountry(country_slug){
                
                 }
 
-                countryModel.insertMany(data)
+                res.send(data)
+                /*
+                country.insertMany(data, (error)=>{
+                    console.log("error: " + error)
+                })
+                */
+                
 
             }).catch(error =>{
 
@@ -115,7 +122,7 @@ function fetchCountry(country_slug){
 
 
 }
-*/
+
 
 
 //world api route
