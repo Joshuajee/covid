@@ -114,7 +114,7 @@ class Table extends React.Component{
             this.setState({
                 redirect:false
             })
-            return <Redirect to={this.state.link}/>;
+            return <Redirect push to={this.state.link}/>;
           }
     
         return(
