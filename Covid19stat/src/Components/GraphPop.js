@@ -1,7 +1,5 @@
-import React, {useState} from 'react'
+import React from 'react'
 import Loader from './Loader';
-//import {Line} from 'react-chartjs-2'
-
 
 
 class GraphPop extends React.Component{

@@ -1,4 +1,4 @@
-import {Redirect, withRouter} from 'react-router-dom'
+import {Redirect} from 'react-router-dom'
 
 import React from 'react'
 import TableRow from './TableRow'

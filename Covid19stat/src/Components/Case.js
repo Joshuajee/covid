@@ -1,5 +1,4 @@
 import React  from 'react'
-import GraphUI from './GraphPop'
 import GraphPop from './GraphPop';
 
 

@@ -26,7 +26,7 @@ function CountryCaseBar(props){
 
     let dailyConfirmed = confirmed[confirmed.length - 1] - confirmed[confirmed.length - 2]
     let dailyRecovered = recovered[recovered.length - 1] - recovered[recovered.length - 2]
-    let dailyActive = active[active.length - 1] - active[active.length - 2]
+    //let dailyActive = active[active.length - 1] - active[active.length - 2]
     let dailyDeaths = deaths[deaths.length - 1] - deaths[deaths.length - 2]
 
     return(

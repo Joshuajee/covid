@@ -88,6 +88,8 @@ class GraphLine extends React.Component{
 
         const {name, value} = event.target
 
+        console.log(name)
+
         this.setState({
                 position : parseInt(value)
         })
