@@ -57,7 +57,7 @@ app.get('/api/country/:country', (req, res) =>{
 
             if(data.length <= 50){
 
-                fetchCountry(req.params.country, res)
+                //fetchCountry(req.params.country, res)
 
             }else{
                 res.send(data)
@@ -124,37 +124,6 @@ function fetchCountry(country_slug, res){
 }
 
 
-
-//world api route
-app.get('/api/world/', (req, res) =>{
-    //{CountrySlug: req.params.country }, 
-    country.find((err, data)=>{
-        if(err){
-            res.json({"err":err})
-            console.log("Failed to retrieve data " + err)
-        }else{
-            res.send(data)
-            console.log(data.length)
-            for(let i = 0; i < 2; i++){
-
-                country.update({Date: data[i].Date}, (err, data) => {
-                    if(err){
-                        res.json({"err":err})
-                        console.log("Failed to retrieve data " + err)
-                    }else{
-                    console.log("DDDDD")
-
-                    }
-                })
-
-                //console.log(data[i].Confirmed + " " + data[i].Recovered + " " + data[i].Active + " " + data[i].Deaths + " " + data[i].Date)
-                //console.log(data[i].Confirmed)
-            }
-            
-        }
-    })
-
-})
 
 //check if we are in a production environment
 if(process.env.NODE_ENV === "production"){
