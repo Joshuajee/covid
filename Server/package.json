@@ -14,11 +14,11 @@
   "author": "Joshua Evuetapha",
   "license": "ISC",
   "dependencies": {
-    "axios": "^0.21.0",
-    "cron": "^1.8.2",
-    "express": "^4.17.1",
-    "mongoose": "^5.10.12",
-    "node-cron": "^2.0.3",
-    "nodemon": "^2.0.4"
+    "axios": "0.21.0",
+    "cron": "1.8.2",
+    "express": "4.17.1",
+    "mongoose": "5.10.12",
+    "node-cron": "2.0.3",
+    "nodemon": "2.0.4"
   }
 }
