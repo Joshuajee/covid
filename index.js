@@ -129,15 +129,15 @@ function fetchCountry(country_slug, res){
 if(process.env.NODE_ENV === "production"){
     
     //serve static production asset
-    app.use(express.static("../Covid19stat/build"))
+    app.use(express.static("Covid19stat/build"))
 
     //get the current file path
     const path = require('path')
 
     //handle any route that is missing from the Server
     app.get('*', (req, res) =>{  
-        res.sendFile(path.resolve(__dirname, "../Covid19stat", "build", "index.html"))
-        console.log(path.resolve(__dirname, "../Covid19stat", "build", "index.html"))
+        res.sendFile(path.resolve(__dirname, "Covid19stat", "build", "index.html"))
+        console.log(path.resolve(__dirname, "Covid19stat", "build", "index.html"))
     })
 
 }
