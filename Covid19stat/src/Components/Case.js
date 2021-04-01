@@ -50,7 +50,7 @@ class Case extends React.Component{
                         {this.props.type}
                     </div>
 
-                    <button onClick={this.showChart} class={button}> View Chart </button>
+                    <button onClick={this.showChart} className={button}> View Chart </button>
                     
                     
 
@@ -70,7 +70,7 @@ class Case extends React.Component{
                     {this.props.type}
                 </div>
      
-            <button onClick={this.showChart} class={button}> View Chart  </button>
+            <button onClick={this.showChart} className={button}> View Chart  </button>
            
             </div>
         
