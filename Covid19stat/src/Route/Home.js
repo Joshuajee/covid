@@ -14,7 +14,7 @@ import axios from 'axios'
 import '../Styles/Loader.css'
 
 import CaseBar from '../Components/CaseBar'
-//import Table from '../Components/Table'
+import Table from '../Components/Table'
 import Graph from '../Components/Graph'
 //import GraphUI from '../Components/GraphUI';
 import Loader from '../Components/Loader'
@@ -83,7 +83,7 @@ class Home extends React.Component{
                             <Graph data={data("Active")} type={"Active"}/>
                         </div>
                     {
-                     //   <Table data={countries} />
+                        <Table data={countries} />
 
                     }
                         
