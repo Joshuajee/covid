@@ -123,7 +123,7 @@ function fetchCountry(country_slug, res){
 
 }
 
-
+/*
 
 //check if we are in a production environment
 if(process.env.NODE_ENV === "production"){
@@ -141,7 +141,7 @@ if(process.env.NODE_ENV === "production"){
     })
 
 }
-
+*/
 
 
 //check if there is an environment port
