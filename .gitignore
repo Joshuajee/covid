@@ -14,6 +14,7 @@ Server/Config/dev.js
 
 # production
 Covid19stat/build
+Config/dev.js
 
 # misc
 .DS_Store
