@@ -13,7 +13,6 @@ Server/Config/dev.js
 /coverage
 
 # production
-Covid19stat/build
 Config/dev.js
 Covid19stat/.eslintcache
 
